@@ -75,6 +75,16 @@
     font-size: 0.9em;
     line-height: 1.4em;
   }
+  #ideaResults {
+    max-width: 700px;
+    margin: 20px auto;
+    background: #FFF9F1;
+    border: 2px solid #A97B50;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
 </style>
 </head>
 <body>
@@ -125,11 +135,10 @@
 </div>
 
 <div class="blob">
-  <h2>💰 Investment-Based Startup Ideas</h2>
-  <label for="customAmount">Enter your budget in AED:</label><br />
-  <input type="number" id="customAmount" placeholder="Any amount..." />
-  <button onclick="generateIdeas()">Get Startup Ideas</button>
-  <div id="ideaResults" style="margin-top:20px;"></div>
+  <h2>💰 Enter Your Budget (AED) to Get One Startup Idea</h2>
+  <input type="number" id="customAmount" placeholder="Enter any amount in AED" />
+  <button onclick="generateIdea()">Get My Startup Idea</button>
+  <div id="ideaResults"></div>
 </div>
 
 <div class="big-box">
@@ -151,72 +160,106 @@
     </p>
   </div>
 
-  <!-- Add the remaining 8 tips in the same format here -->
+  <div class="tip-box">
+    <p><strong>Build a brand:</strong> Make a name and style that people remember and trust.</p>
+    <button class="learn-more" onclick="toggleText('tip3')">Learn more</button>
+    <p id="tip3" class="hidden-text">
+      Your brand is how people see you. Use logos, colors, and stories that show who you are. Consistent branding helps customers trust and recognize your business. Be honest and kind in your messages. A strong brand helps you stand out from others and builds long-term loyalty.
+    </p>
+  </div>
 
+  <div class="tip-box">
+    <p><strong>Use social media:</strong> Share your work online to reach more people fast.</p>
+    <button class="learn-more" onclick="toggleText('tip4')">Learn more</button>
+    <p id="tip4" class="hidden-text">
+      Social media platforms like Instagram, TikTok, and Facebook are free ways to show your product or service. Post photos, videos, and stories regularly. Connect with followers by answering questions and sharing updates. Good social media presence can grow your customers and build community around your brand.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Learn to manage money:</strong> Keep track of income and expenses carefully.</p>
+    <button class="learn-more" onclick="toggleText('tip5')">Learn more</button>
+    <p id="tip5" class="hidden-text">
+      Money management is key to success. Record every sale and purchase. Know your profit and plan for costs. Avoid unnecessary spending and save for future growth. You can use simple apps or notebooks. Understanding your finances helps you make smart decisions and keep your business healthy.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Ask for help:</strong> Don’t be afraid to seek advice from experts or friends.</p>
+    <button class="learn-more" onclick="toggleText('tip6')">Learn more</button>
+    <p id="tip6" class="hidden-text">
+      Everyone needs support sometimes. Talk to teachers, family, or local business people. Join clubs or online groups for entrepreneurs. Feedback and mentorship can help you avoid mistakes and grow faster. Learning from others’ experience saves time and builds confidence.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Keep learning:</strong> Always improve your skills and business knowledge.</p>
+    <button class="learn-more" onclick="toggleText('tip7')">Learn more</button>
+    <p id="tip7" class="hidden-text">
+      The world changes fast. Read books, watch videos, and attend workshops. Learn about marketing, customer service, and new tech. The more you know, the better you can adapt and succeed. Learning is a lifetime journey that helps your business stay fresh and competitive.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Focus on quality:</strong> Give your customers the best product or service you can.</p>
+    <button class="learn-more" onclick="toggleText('tip8')">Learn more</button>
+    <p id="tip8" class="hidden-text">
+      Good quality builds trust and makes people come back. Check your materials and work carefully. Ask customers for feedback and fix issues quickly. Quality over quantity wins customers’ hearts and grows your reputation in the community.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Be patient:</strong> Success takes time; don’t give up easily.</p>
+    <button class="learn-more" onclick="toggleText('tip9')">Learn more</button>
+    <p id="tip9" class="hidden-text">
+      Building a business is a journey with ups and downs. Results might not come immediately. Stay motivated, learn from failures, and keep trying. Patience and persistence turn small steps into big achievements. Celebrate small wins and keep your vision clear.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Give back:</strong> Help your community and customers when you can.</p>
+    <button class="learn-more" onclick="toggleText('tip10')">Learn more</button>
+    <p id="tip10" class="hidden-text">
+      Successful businesses support their community. Donate time, products, or knowledge to causes you care about. Building goodwill creates strong relationships and positive reputation. Giving back makes your business meaningful and inspires others to support you.
+    </p>
+  </div>
 </div>
 
 <script>
-  function changeLanguage(lang) {
-    if(lang === 'ar'){
-      alert('موقع الويب سيُعرض بالعربية قريباً.');
-      // You can add Arabic language switch logic here later
-    } else {
-      alert('Website will continue in English.');
-    }
-  }
-
   function toggleText(id) {
-    const para = document.getElementById(id);
-    para.style.display = (para.style.display === 'block') ? 'none' : 'block';
+    const el = document.getElementById(id);
+    if (el.style.display === 'block') el.style.display = 'none';
+    else el.style.display = 'block';
   }
 
-  function generateIdeas() {
-    const amount = parseInt(document.getElementById('customAmount').value);
-    let ideas = [];
-    if (isNaN(amount)) {
-      ideas = [
-        "Mobile app development 📱",
-        "Online tutoring platform 🎓",
-        "Handmade crafts & digital art shop 🧶",
-        "Recycled fashion brand 👗",
-        "Pet services & grooming 🐶",
-        "Local food delivery 🥗",
-        "Green consulting for schools 🌿"
-      ];
-    } else if (amount <= 5000) {
-      ideas = [
-        "Home bakery or coffee cart ☕",
-        "Tutoring kids online 🧠",
-        "Sell planners/stickers 📒",
-        "Basic graphic design 🎨",
-        "Soap or candle making 🕯️",
-        "Virtual assistant services 💻",
-        "Sell eco-bags or crafts ♻️"
-      ];
-    } else if (amount <= 20000) {
-      ideas = [
-        "Pop-up coffee lounge ☕",
-        "Eco-friendly packaging business 🌱",
-        "Subscription box startup 📦",
-        "Tech repair and resale 🔧",
-        "Home décor studio 🖼️",
-        "Fitness coaching & digital plans 🏋️",
-        "Online Arabic calligraphy shop ✍️"
-      ];
-    } else {
-      ideas = [
-        "Mobile café van ☕🚚",
-        "Sustainable tech startup ♻️💻",
-        "App for wellness and journaling 📲",
-        "EdTech business for kids 🎓",
-        "Indoor smart farming 🌾",
-        "AI business helper chatbot 🤖",
-        "Arabic comics + animation studio 🎬"
-      ];
+  function changeLanguage(lang) {
+    // For simplicity, this demo keeps English only.
+    alert('Language change is coming soon! For now, English only.');
+  }
+
+  function generateIdea() {
+    const budget = Number(document.getElementById('customAmount').value);
+    const container = document.getElementById('ideaResults');
+    if (!budget || budget <= 0) {
+      container.innerHTML = '<p>Please enter a valid budget in AED.</p>';
+      return;
     }
 
-    const ideaHTML = "<ul>" + ideas.map(i => `<li>${i}</li>`).join('') + "</ul>";
-    document.getElementById('ideaResults').innerHTML = ideaHTML;
+    let ideaText = '';
+
+    if (budget < 1000) {
+      ideaText = `Start a homemade healthy snack business. Use your kitchen to prepare small batches of nutritious snacks like energy balls, granola bars, or roasted nuts. Package them attractively and sell at local markets or online. Focus on clean ingredients and build a loyal customer base with samples and social media marketing. This low-cost startup allows you to test the market without big expenses.`;
+    } else if (budget < 5000) {
+      ideaText = `Launch a mobile coffee cart near offices or events. With a small cart, basic coffee machine, and some quality beans, you can serve busy professionals looking for quick fresh coffee. Focus on eco-friendly cups and personalized service. Use social media to announce your location daily. This idea fits your budget and taps into the daily coffee demand with a personal touch.`;
+    } else if (budget < 10000) {
+      ideaText = `Create a sustainable fashion brand by designing eco-friendly clothing or accessories. Use recycled or organic fabrics and partner with local tailors. Market your brand online targeting environmentally conscious youth. Use your budget to produce a small first collection, design branding, and run social media ads. Highlight the story of sustainability and creativity to attract attention and loyal customers.`;
+    } else if (budget < 25000) {
+      ideaText = `Open a small specialty tea and coffee shop with a cozy atmosphere. Invest in quality equipment, comfortable seating, and unique blends. Focus on creating a community space with workshops and events. Use your budget to decorate tastefully and offer specialty drinks that can’t be found elsewhere. This business targets customers seeking experiences beyond just coffee.`;
+    } else {
+      ideaText = `Build a tech startup offering a mobile app for sustainable lifestyle tracking. The app helps users reduce waste, save energy, and connect with local eco-friendly businesses. Use the budget to hire a small development team, design the app, and start marketing. Focus on user-friendly design and community building. This innovative idea fits a larger budget and future growth potential.`;
+    }
+
+    container.innerHTML = `<h3>Your Startup Idea for AED ${budget}:</h3><p>${ideaText}</p>`;
   }
 </script>
 
