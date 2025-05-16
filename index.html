@@ -3,204 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrewUp ☕ | Empowering Entrepreneurs</title>
+  <title>BrewUp ☕ | Coffee & Startups</title>
   <style>
     body {
-      margin: 0;
       font-family: monospace;
-      background-color: #f0f0f0;
-      color: #333;
+      background-color: #f3e5ab;
+      background-image: url('https://www.transparenttextures.com/patterns/coffee-beans.png');
+      color: #4e342e;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-    header {
-      background-color: #6f4e37;
-      color: #fff;
-      padding: 20px;
+    .container {
+      max-width: 800px;
+      background-color: #fffaf0;
+      border: 2px solid #d7ccc8;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(78, 52, 46, 0.2);
+      padding: 30px;
       text-align: center;
     }
-    main {
-      padding: 20px;
+    h1, h2 {
+      color: #6d4c41;
     }
-    .section {
-      background-color: #fff;
-      padding: 20px;
+    .tip-box {
+      background-color: #efebe9;
+      border: 2px solid #bcaaa4;
       border-radius: 8px;
-      margin-bottom: 20px;
+      padding: 15px;
+      margin: 15px 0;
+      color: #3e2723;
+      box-shadow: 0 0 8px #d7ccc8;
     }
-    .section h2 {
-      margin-top: 0;
+    .tip-box strong {
+      color: #4e342e;
     }
-    .entrepreneur {
-      margin-bottom: 15px;
-    }
-    .entrepreneur h3 {
-      margin: 0;
-    }
-    .investment-options button {
-      margin: 5px;
-      padding: 10px 15px;
+    .know-more-btn {
+      background-color: #8d6e63;
+      color: white;
       border: none;
-      border-radius: 5px;
-      background-color: #6f4e37;
-      color: #fff;
+      padding: 8px 12px;
+      margin-top: 10px;
       cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
     }
-    .investment-options button:hover {
-      background-color: #5a3e2d;
+    .know-more-btn:hover {
+      background-color: #6d4c41;
     }
-    .custom-investment {
+    .expanded-content {
+      display: none;
+      margin-top: 10px;
+      background-color: #f5f5f5;
+      border-left: 4px solid #a1887f;
+      padding-left: 10px;
+    }
+    .investment-btn {
+      background-color: #a1887f;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      margin: 10px 6px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .investment-btn:hover {
+      background-color: #6d4c41;
+    }
+    #customAmount {
+      padding: 8px;
+      font-size: 16px;
+      border: 2px solid #a1887f;
+      border-radius: 5px;
+      width: 180px;
       margin-top: 10px;
     }
-    .custom-investment input {
-      padding: 8px;
-      width: 100px;
-      margin-right: 10px;
-    }
-    .tips {
-      margin-top: 20px;
-    }
-    .tip {
-      background-color: #e0e0e0;
-      padding: 10px;
+    #customSubmit {
+      background-color: #795548;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      font-weight: bold;
       border-radius: 5px;
-      margin-bottom: 10px;
       cursor: pointer;
+      font-size: 16px;
     }
-    .tip-content {
-      display: none;
-      margin-top: 5px;
+    #customSubmit:hover {
+      background-color: #5d4037;
+    }
+    #investmentPlan {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #4e342e;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>☕ BrewUp: Coffee Meets Startups 💼</h1>
+    <p>Fuel your dreams with caffeine and a great business plan!</p>
 
-<header>
-  <h1>☕ BrewUp</h1>
-  <p>Empowering Entrepreneurs in the UAE</p>
-</header>
+    <div class="tip-box">
+      <p><strong>Tip:</strong> Know your beans & your audience! ☕🎯</p>
+      <button class="know-more-btn" onclick="toggleTip(event)">🔍 Know more</button>
+      <div class="expanded-content">
+        <p>Just like choosing the right coffee beans, choosing your business audience matters. Research, refine, and roast the perfect idea!</p>
+      </div>
+    </div>
 
-<main>
-  <section class="section">
-    <h2>🌟 Emirati Women Entrepreneurs</h2>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Dr. Aisha Bin Bishr</h3>
-      <p>Director General of Smart Dubai, leading the city's digital transformation initiatives.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Hana Al Rostamani</h3>
-      <p>Group CEO of First Abu Dhabi Bank, the largest bank in the UAE.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Maryam Almheiri</h3>
-      <p>Minister of Climate Change and Environment, focusing on sustainable development.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Raja Easa Al Gurg</h3>
-      <p>Managing Director of Easa Saleh Al Gurg Group, a leading conglomerate in the UAE.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Vandana Joshi</h3>
-      <p>Founder of Start Any Business (SAB), assisting entrepreneurs in establishing businesses in the UAE.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 AlDhabi AlMheiri</h3>
-      <p>Youngest Emirati entrepreneur, founder of Rainbow Chimney, a children's bookstore.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Elissa Freiha</h3>
-      <p>Founder of Womena, a platform empowering women through storytelling and investment.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Fatima Obaid Al Jaber</h3>
-      <p>Chairwoman of the UAE Businesswomen's Council and COO of Al Jaber Group.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Donna Benton</h3>
-      <p>Founder of The Entertainer, a popular lifestyle savings app.</p>
-    </div>
-    <div class="entrepreneur">
-      <h3>👩‍💼 Dr. Rafia Ghubash</h3>
-      <p>Founder of the Women's Museum in Dubai, celebrating the achievements of Emirati women.</p>
-    </div>
-  </section>
+    <h2>💰 Choose Your Investment Roast</h2>
+    <button class="investment-btn" onclick="showPlan(1000)">Light Roast – AED 1,000</button>
+    <button class="investment-btn" onclick="showPlan(5000)">Medium Roast – AED 5,000</button>
+    <button class="investment-btn" onclick="showPlan(10000)">Dark Roast – AED 10,000</button>
 
-  <section class="section">
-    <h2>💰 Choose Your Investment</h2>
-    <div class="investment-options">
-      <button onclick="showTips(1000)">AED 1,000</button>
-      <button onclick="showTips(5000)">AED 5,000</button>
-      <button onclick="showTips(6000)">AED 6,000</button>
-      <button onclick="showTips(8000)">AED 8,000</button>
-      <button onclick="showTips(9000)">AED 9,000</button>
-      <button onclick="showTips(10000)">AED 10,000</button>
+    <div>
+      <input type="number" id="customAmount" placeholder="Or enter your own amount" />
+      <br />
+      <button id="customSubmit">☕ Brew My Plan</button>
     </div>
-    <div class="custom-investment">
-      <label for="customAmount">Or enter your own amount:</label>
-      <input type="number" id="customAmount" placeholder="e.g., 7500" />
-      <button onclick="customTips()">Submit</button>
-    </div>
-  </section>
+    <div id="investmentPlan"></div>
+  </div>
 
-  <section class="section tips" id="tipsSection">
-    <!-- Tips will be displayed here -->
-  </section>
-</main>
+  <script>
+    function toggleTip(event) {
+      const content = event.target.nextElementSibling;
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        event.target.textContent = '🔍 Know more';
+      } else {
+        content.style.display = 'block';
+        event.target.textContent = '▲ Show less';
+      }
+    }
 
-<script>
-  const tipsData = {
-    1000: [
-      "📘 Invest in a domain name and basic website hosting.",
-      "🎨 Design a simple logo using free tools.",
-      "📱 Set up social media profiles for your brand.",
-      "📝 Create a content plan for your blog or social media.",
-      "📦 Source initial product samples or prototypes.",
-      "📊 Conduct a basic market research survey.",
-      "🧾 Register your business name.",
-      "📚 Purchase a business planning book or course.",
-      "🛒 List products on online marketplaces.",
-      "📣 Run a small social media ad campaign."
-    ],
-    5000: [
-      "🏢 Rent a small co-working space.",
-      "🛍️ Develop branded packaging materials.",
-      "💻 Upgrade to a professional website with e-commerce.",
-      "📷 Invest in a product photography session.",
-      "📈 Hire a freelance marketer for a campaign.",
-      "📦 Order initial inventory in bulk.",
-      "🧑‍💼 Attend a local business networking event.",
-      "🎓 Enroll in an advanced business course.",
-      "📝 Hire a copywriter for website content.",
-      "📣 Launch a targeted email marketing campaign."
-    ],
-    // Add similar arrays for 6000, 8000, 9000, 10000
-  };
+    function showPlan(amount) {
+      const planDiv = document.getElementById('investmentPlan');
+      let plan = '';
+      if (amount === 1000) {
+        plan = '☕ Light Roast Plan: A gentle start for your coffee-inspired startup journey.';
+      } else if (amount === 5000) {
+        plan = '🔥 Medium Roast Plan: Brew up strong marketing and growth strategies.';
+      } else if (amount === 10000) {
+        plan = '🚀 Dark Roast Plan: Power up with tech, branding, and full business support.';
+      }
+      planDiv.textContent = plan;
+    }
 
-  function showTips(amount) {
-    const tipsSection = document.getElementById('tipsSection');
-    tipsSection.innerHTML = `<h2>💡 Tips for AED ${amount}</h2>`;
-    const tipsList = tipsData[amount] || generateGenericTips(amount);
-    tipsList.forEach((tip, index) => {
-      const tipDiv = document.createElement('div');
-      tipDiv.className = 'tip';
-      tipDiv.innerHTML = `<strong>Tip ${index + 1}:</strong> ${tip}`;
-      tipsSection.appendChild(tipDiv);
+    document.getElementById('customSubmit').addEventListener('click', () => {
+      const val = parseFloat(document.getElementById('customAmount').value);
+      const planDiv = document.getElementById('investmentPlan');
+      if (isNaN(val) || val <= 0) {
+        planDiv.textContent = '❌ Please enter a valid amount.';
+      } else {
+        planDiv.textContent = `☕ Custom Brew: AED ${val.toLocaleString()} plan tailored just for you!`;
+      }
     });
-  }
-
-  function customTips() {
-    const amount = document.getElementById('customAmount').value;
-    if (amount) {
-      showTips(amount);
-    }
-  }
-
-  function generateGenericTips(amount) {
-    const tips = [];
-    for (let i = 1; i <= 10; i++) {
-      tips.push(`🔧 Allocate AED ${(amount / 10).toFixed(2)} to area ${i}.`);
-    }
-    return tips;
-  }
-</script>
-
+  </script>
 </body>
 </html>
