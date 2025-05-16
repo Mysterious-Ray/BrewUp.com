@@ -2,119 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BrewUp - Startup Tips & Investment Plans ☕💼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrewUp ☕ | Empowering Entrepreneurs</title>
   <style>
     body {
-      font-family: monospace, monospace;
-      /* Blue gradient background */
-      background: linear-gradient(135deg, #3366ff, #99ccff);
-      color: #003366; /* dark navy text */
-      margin: 0; padding: 20px;
-      min-height: 100vh;
+      margin: 0; padding: 0;
+      font-family: monospace;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20210416/pngtree-business-tech-startup-blue-contemporary-image_627598.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #3e2723; /* dark brown */
     }
-    h1, h2 {
-      color: #004080; /* strong blue */
+    header {
+      background-color: rgba(111, 78, 55, 0.9);
+      color: #fff;
+      padding: 20px;
       text-align: center;
+      font-size: 2em;
+      letter-spacing: 2px;
     }
-    .tip-box {
-      background-color: #cce0ff; /* pale blue */
-      border: 2px solid #4d79ff; /* medium blue border */
-      border-radius: 8px;
-      padding: 15px;
-      margin: 15px auto;
-      max-width: 700px;
-      box-shadow: 0 0 8px #99bbff;
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 0 15px rgba(111, 78, 55, 0.7);
     }
-    .tip-box strong {
-      color: #003366;
+    h2 {
+      color: #6f4e37;
+      border-bottom: 2px solid #6f4e37;
+      padding-bottom: 5px;
+      margin-top: 40px;
     }
-    .know-more-btn {
-      background-color: #4d79ff; /* medium blue button */
+    .entrepreneurs, .investment, .tips {
+      margin-bottom: 30px;
+    }
+    .entrepreneur-box {
+      background: #f9f3ee;
+      border-left: 6px solid #6f4e37;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+    .entrepreneur-box h3 {
+      margin: 0 0 8px 0;
+      font-weight: bold;
+      color: #5d4037;
+    }
+    .investment button, .investment #customSubmit {
+      background-color: #6f4e37;
       color: white;
       border: none;
-      padding: 8px 12px;
-      margin-top: 10px;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      border-radius: 5px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .investment button:hover, .investment #customSubmit:hover {
+      background-color: #5a3e2d;
+    }
+    .investment input[type="number"] {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 120px;
+      margin-right: 10px;
+      font-family: monospace;
+    }
+    .tip-box {
+      background: #f9f3ee;
+      border-left: 6px solid #6f4e37;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      position: relative;
+    }
+    .tip-box p {
+      margin: 0 0 8px 0;
+    }
+    .know-more-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: #6f4e37;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
     .know-more-btn:hover {
-      background-color: #3366ff; /* darker blue on hover */
+      background-color: #5a3e2d;
     }
     .expanded-content {
       display: none;
-      margin-top: 10px;
-      background-color: #e6f0ff;
-      border-left: 4px solid #4d79ff;
-      padding-left: 10px;
-      color: #002244;
-    }
-    #investmentSection {
-      text-align: center;
-      margin: 40px 0 20px 0;
-    }
-    .investment-btn {
-      background-color: #4d79ff;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      margin: 10px 8px;
-      cursor: pointer;
+      margin-top: 15px;
+      background: #fff8e1;
+      padding: 15px;
       border-radius: 6px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
+      border-left: 4px solid #6f4e37;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
     }
-    .investment-btn:hover {
-      background-color: #3366ff;
-    }
-    #investmentPlan {
-      margin-top: 25px;
-      font-size: 18px;
-      color: #003366;
+    a {
+      color: #6f4e37;
+      text-decoration: none;
       font-weight: bold;
     }
-    #customAmount {
-      padding: 8px;
-      font-size: 16px;
-      border: 2px solid #4d79ff;
-      border-radius: 5px;
-      width: 150px;
-      margin-right: 10px;
-    }
-    #customSubmit {
-      background-color: #4d79ff;
-      color: white;
-      border: none;
-      padding: 9px 15px;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-    #customSubmit:hover {
-      background-color: #3366ff;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>💼 BrewUp Startup Tips & Investment Plans ☕</h1>
-
+  <header>
+    ☕ BrewUp — Empowering UAE Entrepreneurs 🚀
+  </header>
   <main>
-    <section id="tipsSection">
-      <!-- Tip boxes same as before -->
+    <section class="entrepreneurs">
+      <h2>🌟 Inspiring UAE Women Entrepreneurs</h2>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Dr. Aisha Bin Bishr</h3>
+        <p>Director General of Smart Dubai, Dr. Aisha is a pioneer of the city's digital transformation, making Dubai one of the smartest cities globally. Her leadership inspires tech startups focused on innovation and smart solutions. <a href="https://www.smartdubai.ae" target="_blank">Learn more</a></p>
+      </div>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Hana Al Rostamani</h3>
+        <p>Group CEO of First Abu Dhabi Bank, Hana has driven banking innovations and supported many young entrepreneurs with financial tools and mentorship. Her journey from finance graduate to CEO is motivational. <a href="https://www.bankfab.com" target="_blank">Learn more</a></p>
+      </div>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Maryam Almheiri</h3>
+        <p>Minister of Climate Change and Environment, Maryam leads sustainability efforts in the UAE and supports green startups. She inspires entrepreneurs to create businesses that respect the planet and its future. <a href="https://www.moccae.gov.ae" target="_blank">Learn more</a></p>
+      </div>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Raja Easa Al Gurg</h3>
+        <p>Managing Director of Easa Saleh Al Gurg Group, Raja has expanded a family business into multiple industries while supporting women-led startups in the region. Her story blends tradition with modern entrepreneurship. <a href="https://www.algurg.com" target="_blank">Learn more</a></p>
+      </div>
+    </section>
+
+    <section class="investment">
+      <h2>💰 Choose Your Investment Amount</h2>
+      <div>
+        <button onclick="showPlan(1000)">AED 1,000</button>
+        <button onclick="showPlan(5000)">AED 5,000</button>
+        <button onclick="showPlan(6000)">AED 6,000</button>
+        <button onclick="showPlan(8000)">AED 8,000</button>
+        <button onclick="showPlan(9000)">AED 9,000</button>
+        <button onclick="showPlan(10000)">AED 10,000</button>
+      </div>
+      <div style="margin-top:15px;">
+        <label for="customAmount">Or enter custom amount: </label>
+        <input type="number" id="customAmount" placeholder="e.g., 7500" />
+        <button id="customSubmit">Submit</button>
+      </div>
+      <div id="investmentPlan" style="margin-top: 25px; padding: 15px; background: #fff8e1; border-radius: 6px; border-left: 6px solid #6f4e37; display:none;"></div>
+    </section>
+
+    <section class="tips">
+      <h2>💡 10 Tips to Become a Better Young Entrepreneur</h2>
+
       <div class="tip-box" id="tip1">
-        <p><strong>Tip 1:</strong> Plan your business carefully. Research your market, set clear goals, and prepare for challenges.</p>
+        <p><strong>Tip 1:</strong> Focus on building your network early. Meeting people who share your passion or can mentor you opens doors that textbooks cannot.</p>
         <button class="know-more-btn" onclick="toggleTip(event, 1)">🔍 Know more</button>
         <div class="expanded-content" id="tipContent1">
-          <p>Starting a business needs careful planning. Understand who your customers are, what they want, and how your business can meet their needs. Set goals for what you want to achieve and make a timeline.</p>
-          <p>Be ready for challenges and think about how you will handle them. A strong plan helps you stay focused and succeed.</p>
+          <p>Building a strong professional network is critical. Start by attending local events, joining online forums, or connecting with alumni. Every contact you make can help you with advice, funding, or partnerships. Use social media like LinkedIn wisely, and don't hesitate to ask questions or seek guidance. Remember, networking is not just about taking but also giving back. Share your ideas and help others whenever possible to build trust and lasting relationships.</p>
+          <p>Keep a contact list and follow up regularly. This continuous interaction will help you build meaningful connections. Over time, your network can become your biggest asset.</p>
         </div>
       </div>
 
-      <!-- ... Other tips remain unchanged ... -->
+      <div class="tip-box" id="tip2">
+        <p><strong>Tip 2:</strong> Set clear goals for your business, both short-term and long-term. Clarity helps you stay focused and measure your progress effectively.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 2)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent2">
+          <p>Defining clear goals is essential to any entrepreneurial journey. Start by writing down what you want to achieve within the next 3 months, 6 months, and 1 year. Break these goals into actionable steps and prioritize them. When you have a clear direction, you avoid wasting time on distractions or unnecessary tasks.</p>
+          <p>Also, keep reviewing and adjusting your goals as you learn more about your market and customers. Flexibility combined with clarity will help you succeed and grow sustainably.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip3">
+        <p><strong>Tip 3:</strong> Understand your customers deeply. Knowing their needs, pain points, and desires allows you to tailor your products or services perfectly.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 3)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent3">
+          <p>Customer understanding is at the heart of any successful business. Use surveys, interviews, or social media feedback to gather insights about your customers. What problems do they face? What motivates their buying decisions? The better you know them, the easier it is to create offerings that solve their problems.</p>
+          <p>Don’t assume—you need real data and feedback. Always keep communication open, and be ready to pivot based on what your customers tell you. Happy customers become loyal advocates for your brand.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip4">
+        <p><strong>Tip 4:</strong> Manage your finances carefully. Track income and expenses from day one, and understand your cash flow to avoid surprises.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 4)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent4">
+          <p>Financial discipline is key for startups. Even if your business is small, keep records of every transaction. Use simple spreadsheets or apps to track money coming in and going out. Understanding your cash flow helps you plan for expenses and investments.</p>
+          <p>Make budgets and stick to them. Avoid unnecessary spending and always have a reserve for emergencies. Knowing your financial status will also help you when seeking loans or investors, as they want to see your financial awareness and planning skills.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip5">
+        <p><strong>Tip 5:</strong> Embrace failure as a learning tool. Every mistake teaches you something valuable and moves you closer to success.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 5)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent5">
+          <p>No entrepreneur succeeds without setbacks. Instead of fearing failure, view it as an opportunity to improve. When things don’t go as planned, analyze what happened, learn from it, and adapt your strategy. This mindset builds resilience and creativity.</p>
+          <p>Share your failures with mentors or peers to get feedback and encouragement. Remember, persistence and a positive attitude are often the difference between success and quitting too soon.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip6">
+        <p><strong>Tip 6:</strong> Stay curious and keep learning. The business world changes fast; ongoing learning keeps you competitive and innovative.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 6)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent6">
+          <p>Read books, watch videos, attend webinars, and follow industry news to stay updated. Learning new skills or tools can open unexpected doors. Technology, marketing trends, and customer behavior all evolve, and your knowledge must evolve too.</p>
+          <p>Set aside time weekly for self-improvement. Join local entrepreneur groups or online communities to exchange ideas and experiences. Growth happens when you invest in yourself constantly.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip7">
+        <p><strong>Tip 7:</strong> Build a strong online presence. Use social media and websites to reach customers and showcase your brand personality.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 7)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent7">
+          <p>In today’s world, digital visibility is essential. Create social media profiles that reflect your brand values and engage authentically with followers. Post regularly, share behind-the-scenes content, and encourage feedback.</p>
+          <p>A simple website or blog helps customers find you and learn more about your products or services. Use consistent branding and clear contact info. This builds trust and widens your market reach effectively.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip8">
+        <p><strong>Tip 8:</strong> Collaborate and partner with others. Teamwork multiplies your strengths and helps overcome weaknesses.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 8)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent8">
+          <p>Partnerships can be powerful. Look for complementary businesses or people who can help with skills or resources you lack. Collaboration can lead to joint marketing, product bundles, or shared knowledge.</p>
+          <p>Choose partners carefully and ensure clear communication and shared goals. Together, you can tackle bigger challenges and create better products or services than alone.</p>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip9">
+        <p><strong>Tip 9:</strong> Prioritize customer service. Happy customers return and recommend you to others, growing your business naturally.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 9)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent9">
+          <p>Exceptional service sets you apart. Respond quickly and kindly to inquiries or complaints. Personalize your communication and go the extra mile to satisfy customers.</p>
+          <p>Use feedback to improve continuously and thank customers for their loyalty. Word of mouth is powerful, and great service creates enthusiastic brand ambassadors.</p>
+        </div>
+      </div>
 
       <div class="tip-box" id="tip10">
         <p><strong>Tip 10:</strong> Take care of your wellbeing. Entrepreneurship is demanding, so balance work with rest, exercise, and hobbies.</p>
@@ -124,22 +255,6 @@
           <p>Connect with friends and family for support, and remember that rest fuels productivity. A healthy entrepreneur is a successful entrepreneur.</p>
         </div>
       </div>
-    </section>
-
-    <section id="investmentSection">
-      <h2>💰 Choose Your Investment Plan</h2>
-      <button class="investment-btn" onclick="showPlan(1000)">AED 1,000</button>
-      <button class="investment-btn" onclick="showPlan(5000)">AED 5,000</button>
-      <button class="investment-btn" onclick="showPlan(6000)">AED 6,000</button>
-      <button class="investment-btn" onclick="showPlan(8000)">AED 8,000</button>
-      <button class="investment-btn" onclick="showPlan(9000)">AED 9,000</button>
-      <button class="investment-btn" onclick="showPlan(10000)">AED 10,000</button>
-
-      <div style="margin-top: 20px;">
-        <input type="number" id="customAmount" placeholder="Enter custom amount" />
-        <button id="customSubmit">Submit</button>
-      </div>
-      <div id="investmentPlan" style="display:none;"></div>
     </section>
   </main>
 
@@ -178,14 +293,20 @@
     }
 
     document.getElementById('customSubmit').addEventListener('click', () => {
-      const val = parseFloat(document.getElementById('customAmount').value);
+      const val = parseInt(document.getElementById('customAmount').value);
       const planDiv = document.getElementById('investmentPlan');
       if (isNaN(val) || val <= 0) {
         planDiv.style.display = 'block';
         planDiv.textContent = '❌ Please enter a valid positive number.';
+      } else if (val < 1000) {
+        planDiv.style.display = 'block';
+        planDiv.textContent = '💡 Minimum investment is AED 1,000. Please enter a higher amount.';
+      } else if (val > 50000) {
+        planDiv.style.display = 'block';
+        planDiv.textContent = '💡 Maximum recommended investment is AED 50,000. Please enter a lower amount.';
       } else {
         planDiv.style.display = 'block';
-        planDiv.textContent = `✨ Custom Plan: Your investment of AED ${val.toLocaleString()} will be tailored with personalized coaching and startup support. Contact us for details.`;
+        planDiv.textContent = `✨ Custom Plan: Your investment of AED ${val} will be tailored with personalized coaching and startup support. Contact us for details.`;
       }
     });
   </script>
