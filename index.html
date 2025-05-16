@@ -1,147 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BrewUp ☕ | Ignite Your Ideas</title>
+  <meta charset="UTF-8">
+  <title>BrewUp ☕ | Start Your Dream</title>
   <style>
     body {
       margin: 0;
-      font-family: monospace;
-      background: linear-gradient(135deg, #f3e9dd, #d2b48c);
-      color: #3b2f2f;
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(to bottom right, #f4e3d3, #c8a27e);
+      color: #3e2c23;
+    }
+
+    .language-select {
+      text-align: right;
+      padding: 10px 20px;
+      background-color: #fdf5ec;
+    }
+
+    select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
     }
 
     header {
-      background-color: #4e342e;
-      color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 40px 20px 20px;
+      background-color: #fdf5ec;
+      border-radius: 0 0 50% 50% / 10% 10% 20% 20%;
     }
 
     header h1 {
-      font-size: 3rem;
-      margin: 0;
+      font-size: 2.8em;
+      margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    .section {
-      padding: 2rem;
-      max-width: 1000px;
+      font-size: 1.2em;
+      max-width: 600px;
       margin: auto;
     }
 
-    .section h2 {
-      border-left: 5px solid #4e342e;
-      padding-left: 10px;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .entrepreneur {
+    .section {
       background-color: #fff8f0;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-left: 4px solid #8d6e63;
+      margin: 40px 20px;
+      border-radius: 40px;
+      padding: 30px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
 
-    .startup-idea {
-      background-color: #fcefe1;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-left: 4px solid #a1887f;
+    .section h2 {
+      font-size: 1.8em;
+      color: #5b4033;
+      margin-bottom: 15px;
     }
 
-    .budget-button {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #a1887f;
+    .section ul {
+      padding-left: 20px;
+      font-size: 1em;
+    }
+
+    .startup-option {
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      margin: 20px 0;
+    }
+
+    input[type=number] {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #bca28e;
+      border-radius: 10px;
+    }
+
+    button {
+      background-color: #a97453;
       color: white;
-      text-decoration: none;
-      border-radius: 5px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #8e5c3c;
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f1e4d1;
+      border-radius: 15px;
+      white-space: pre-wrap;
     }
 
     footer {
       text-align: center;
-      background: #4e342e;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 30px 10px;
+      background-color: #e8d6c1;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .section h2 {
+        font-size: 1.4em;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="language-select">
+    <label for="lang">Choose Language:</label>
+    <select id="lang" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+
   <header>
     <h1>BrewUp ☕</h1>
-    <p>Where bold ideas meet business & sustainability</p>
+    <p>Let’s build your dream! Pick your budget, explore ideas, and be inspired by real women leaders in the UAE.</p>
   </header>
 
   <div class="section">
-    <h2>🚀 Startup Ideas</h2>
-    <div class="startup-idea"><strong>Eco-friendly Packaging:</strong> Replace plastic with biodegradable alternatives 🌱</div>
-    <div class="startup-idea"><strong>Virtual Tutoring Hub:</strong> Connect students with skilled tutors online 📚</div>
-    <div class="startup-idea"><strong>Artisan Bakery:</strong> Sell fresh, locally made baked goods 🥖</div>
-    <div class="startup-idea"><strong>Mobile App for Wellness:</strong> Daily meditation, hydration & activity tracker 💧</div>
-    <div class="startup-idea"><strong>DIY Robotics Kits:</strong> For schools and hobbyists 🤖</div>
-    <div class="startup-idea"><strong>Sustainable Fashion Line:</strong> Stylish clothes from recycled materials 👗</div>
-  </div>
-
-  <div class="section">
-    <h2>💼 Women Entrepreneurs</h2>
-
-    <div class="entrepreneur">
-      <strong>Rania Al Ali (UAE)</strong><br>
-      Founder of The Green Spoon 🌿, a zero-waste grocery store in Abu Dhabi. Rania started with AED 20,000 and grew using social media to reach eco-conscious shoppers.
+    <h2>💡 Startup Ideas (Pick a Budget)</h2>
+    <div class="startup-option">
+      <strong>AED 1,000 - 5,000:</strong>
+      <ul>
+        <li>Start a handmade crafts shop 🎨</li>
+        <li>Home tiffin service 🥗</li>
+        <li>Digital art or logo design 💻</li>
+      </ul>
     </div>
-
-    <div class="entrepreneur">
-      <strong>Lubna Olayan (KSA)</strong><br>
-      One of the most powerful women in business. She led her family conglomerate, opening global opportunities for Middle Eastern women.
+    <div class="startup-option">
+      <strong>AED 5,000 - 20,000:</strong>
+      <ul>
+        <li>Pop-up coffee booth ☕</li>
+        <li>Online classes (art/music) 🎶</li>
+        <li>Plant business with delivery 🌱</li>
+      </ul>
     </div>
-
-    <div class="entrepreneur">
-      <strong>Salama Alabbar (UAE)</strong><br>
-      Founder of Sympl, a curated concept store mixing design, sustainability & fashion. Started with passion and a minimal AED 15,000 budget.
+    <div class="startup-option">
+      <strong>AED 20,000 - 50,000:</strong>
+      <ul>
+        <li>Mobile pet grooming van 🐶</li>
+        <li>Home bakery with delivery 🍰</li>
+        <li>Eco-product online store 🌍</li>
+      </ul>
     </div>
-
-    <div class="entrepreneur">
-      <strong>Reem Al Gurg (UAE)</strong><br>
-      Vice Chairperson of Easa Saleh Al Gurg Group, advocating for women in STEM and business leadership.
-    </div>
-
-    <div class="entrepreneur">
-      <strong>Huda Kattan (UAE)</strong><br>
-      A beauty influencer turned mogul. She started Huda Beauty with her sisters using AED 25,000 and is now a global brand 🌍.
-    </div>
-
-    <div class="entrepreneur">
-      <strong>Nayla Al Khaja (UAE)</strong><br>
-      First female Emirati film director and CEO of Nayla Al Khaja Films. She supports women in creative industries. 🎬
-    </div>
-
-    <div class="entrepreneur">
-      <strong>Amna Al Qubaisi (UAE)</strong><br>
-      First female Emirati Formula 4 driver. She’s an inspiration for women breaking into male-dominated fields. 🏎️
+    <div class="startup-option">
+      <strong>Other (Enter Your Budget in AED)</strong>
+      <div class="input-box">
+        <input type="number" id="customBudget" placeholder="Enter your budget in AED">
+        <button onclick="generateIdeas()">Get Ideas</button>
+      </div>
+      <div id="customOutput" class="output"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>💰 Investment Plans</h2>
-    <p>Choose a budget to discover matching startup guides:</p>
-    <a class="budget-button" href="#">AED 1,000</a>
-    <a class="budget-button" href="#">AED 5,000</a>
-    <a class="budget-button" href="#">AED 10,000</a>
-    <a class="budget-button" href="#">AED 25,000</a>
-    <a class="budget-button" href="#">AED 50,000</a>
+    <h2>🌟 Women Entrepreneurs from the UAE</h2>
+    <ul>
+      <li><strong>Amna Al Qubaisi</strong> – First female Emirati race driver & tech speaker</li>
+      <li><strong>Najla Al Midfa</strong> – CEO of Sheraa, helping young entrepreneurs grow</li>
+      <li><strong>Rania H. Biltagi</strong> – Built a fun learning STEM center for kids</li>
+      <li><strong>Salama Mohamed</strong> – Created the "Peacefull" skincare brand</li>
+      <li><strong>Reem Al Marzouqi</strong> – Inventor, supports smart startups</li>
+      <li><strong>Dr. Amina Al Rustamani</strong> – Leads creative industries and innovation</li>
+      <li><strong>Fatima Al Kaabi</strong> – Tech inventor, inspiring young minds</li>
+    </ul>
   </div>
 
   <footer>
-    ☕ BrewUp — Start smart. Brew success. | Made with 💡 in the UAE.
+    Made with ☕ and creativity by BrewUp | UAE’s startup buddy 🇦🇪
   </footer>
+
+  <script>
+    function generateIdeas() {
+      const amount = parseInt(document.getElementById('customBudget').value);
+      let output = "";
+
+      if (isNaN(amount) || amount <= 0) {
+        output = "Please enter a number more than 0.";
+      } else if (amount <= 4000) {
+        output = "Startup Ideas:\n- Sell bookmarks or keychains 📚\n- Start a weekend lemonade stand 🍋\n- Do plant rentals for offices 🌿";
+      } else if (amount <= 10000) {
+        output = "Startup Ideas:\n- Create social media posts for small businesses 📱\n- Do online classes for art or dance 🎨\n- Make a craft subscription box 📦";
+      } else if (amount <= 25000) {
+        output = "Startup Ideas:\n- Start a pet walking service 🐕\n- Create digital learning games 🧠\n- Launch a local makeup brand 💄";
+      } else {
+        output = "Startup Ideas:\n- Coffee + coding café for teens ☕💻\n- Travel planning app with local tips 📲\n- Eco gift shop for handmade items 🌍🎁";
+      }
+
+      document.getElementById("customOutput").textContent = output;
+    }
+
+    function changeLanguage() {
+      const lang = document.getElementById("lang").value;
+      alert("More languages coming soon. English is currently supported.");
+    }
+  </script>
 </body>
 </html>
