@@ -1,214 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BrewUp ☕ | Start Your Dream</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Courier New', monospace;
-      background: linear-gradient(to bottom right, #f4e3d3, #c8a27e);
-      color: #3e2c23;
-    }
-
-    .language-select {
-      text-align: right;
-      padding: 10px 20px;
-      background-color: #fdf5ec;
-    }
-
-    select {
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background-color: #fdf5ec;
-      border-radius: 0 0 50% 50% / 10% 10% 20% 20%;
-    }
-
-    header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .section {
-      background-color: #fff8f0;
-      margin: 40px 20px;
-      border-radius: 40px;
-      padding: 30px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-
-    .section h2 {
-      font-size: 1.8em;
-      color: #5b4033;
-      margin-bottom: 15px;
-    }
-
-    .section ul {
-      padding-left: 20px;
-      font-size: 1em;
-    }
-
-    .startup-option {
-      margin-bottom: 20px;
-    }
-
-    .input-box {
-      margin: 20px 0;
-    }
-
-    input[type=number] {
-      padding: 10px;
-      width: 100%;
-      font-size: 16px;
-      border: 1px solid #bca28e;
-      border-radius: 10px;
-    }
-
-    button {
-      background-color: #a97453;
-      color: white;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #8e5c3c;
-    }
-
-    .output {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #f1e4d1;
-      border-radius: 15px;
-      white-space: pre-wrap;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 10px;
-      background-color: #e8d6c1;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-
-      .section h2 {
-        font-size: 1.4em;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BrewUp 🌱☕</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #DCC7AA, #B08B64);
+    color: #3E2F1C;
+    text-align: center;
+    min-height: 100vh;
+  }
+  .blob {
+    background: #F7EBDD;
+    border-radius: 40px;
+    padding: 25px 30px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  h1, h2 {
+    font-weight: 700;
+  }
+  select, input[type=number], button {
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    margin: 5px 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .entrepreneur-box, .tip-box {
+    background: #FFF9F1;
+    border: 2px solid #A97B50;
+    border-radius: 30px;
+    padding: 20px 25px;
+    margin: 15px auto;
+    max-width: 650px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
+    position: relative;
+  }
+  .learn-more {
+    background-color: #A97B50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 15px;
+  }
+  ul {
+    text-align: left;
+    max-width: 700px;
+    margin: 10px auto;
+    padding-left: 20px;
+  }
+  .big-box {
+    border: 2px solid #C7A77F;
+    border-radius: 40px;
+    padding: 35px 40px;
+    margin: 40px auto;
+    background-color: #FAF0E6;
+    max-width: 1000px;
+  }
+  .hidden-text {
+    display: none;
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 0.9em;
+    line-height: 1.4em;
+  }
+</style>
 </head>
 <body>
-  <div class="language-select">
-    <label for="lang">Choose Language:</label>
-    <select id="lang" onchange="changeLanguage()">
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
-    </select>
+
+<div class="blob">
+  <h1>🌍 BrewUp - Empower Your Dream Startup</h1>
+  <p>Choose your language:</p>
+  <select onchange="changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+  </select>
+</div>
+
+<div class="blob">
+  <h2>✨ Meet Women Entrepreneurs</h2>
+
+  <div class="entrepreneur-box">
+    <p><strong>Amna Al Qubaisi:</strong> UAE’s first female F3 racer turned tech investor. She inspires youth, proving girls can lead in any field.</p>
+    <button class="learn-more" onclick="toggleText('amna')">Learn more</button>
+    <p id="amna" class="hidden-text">
+      Amna’s journey began on the racetrack but expanded into investing in AI and eco-startups. Her vision is to mentor young girls in tech and sustainability. She speaks globally about courage, equality, and innovation. With strong family values, Amna balances ambition and humility. She is a national icon pushing limits.
+    </p>
   </div>
 
-  <header>
-    <h1>BrewUp ☕</h1>
-    <p>Let’s build your dream! Pick your budget, explore ideas, and be inspired by real women leaders in the UAE.</p>
-  </header>
-
-  <div class="section">
-    <h2>💡 Startup Ideas (Pick a Budget)</h2>
-    <div class="startup-option">
-      <strong>AED 1,000 - 5,000:</strong>
-      <ul>
-        <li>Start a handmade crafts shop 🎨</li>
-        <li>Home tiffin service 🥗</li>
-        <li>Digital art or logo design 💻</li>
-      </ul>
-    </div>
-    <div class="startup-option">
-      <strong>AED 5,000 - 20,000:</strong>
-      <ul>
-        <li>Pop-up coffee booth ☕</li>
-        <li>Online classes (art/music) 🎶</li>
-        <li>Plant business with delivery 🌱</li>
-      </ul>
-    </div>
-    <div class="startup-option">
-      <strong>AED 20,000 - 50,000:</strong>
-      <ul>
-        <li>Mobile pet grooming van 🐶</li>
-        <li>Home bakery with delivery 🍰</li>
-        <li>Eco-product online store 🌍</li>
-      </ul>
-    </div>
-    <div class="startup-option">
-      <strong>Other (Enter Your Budget in AED)</strong>
-      <div class="input-box">
-        <input type="number" id="customBudget" placeholder="Enter your budget in AED">
-        <button onclick="generateIdeas()">Get Ideas</button>
-      </div>
-      <div id="customOutput" class="output"></div>
-    </div>
+  <div class="entrepreneur-box">
+    <p><strong>Reem Al Marzouqi:</strong> Created a car that can be driven by people without arms. A proud UAE innovator and inventor.</p>
+    <button class="learn-more" onclick="toggleText('reem')">Learn more</button>
+    <p id="reem" class="hidden-text">
+      Reem made headlines with her patented foot-controlled car, inspired by real-life challenges of disabled people. She empowers future engineers and focuses on making mobility accessible to everyone. She encourages young girls to explore STEM fields and has won many global awards. She continues to change lives through design.
+    </p>
   </div>
 
-  <div class="section">
-    <h2>🌟 Women Entrepreneurs from the UAE</h2>
-    <ul>
-      <li><strong>Amna Al Qubaisi</strong> – First female Emirati race driver & tech speaker</li>
-      <li><strong>Najla Al Midfa</strong> – CEO of Sheraa, helping young entrepreneurs grow</li>
-      <li><strong>Rania H. Biltagi</strong> – Built a fun learning STEM center for kids</li>
-      <li><strong>Salama Mohamed</strong> – Created the "Peacefull" skincare brand</li>
-      <li><strong>Reem Al Marzouqi</strong> – Inventor, supports smart startups</li>
-      <li><strong>Dr. Amina Al Rustamani</strong> – Leads creative industries and innovation</li>
-      <li><strong>Fatima Al Kaabi</strong> – Tech inventor, inspiring young minds</li>
-    </ul>
+  <div class="entrepreneur-box">
+    <p><strong>Dr. Ayesha Al-Memari:</strong> First Emirati emergency physician, blending healthcare innovation with community impact.</p>
+    <button class="learn-more" onclick="toggleText('ayesha')">Learn more</button>
+    <p id="ayesha" class="hidden-text">
+      Dr. Ayesha broke barriers in the male-dominated field of emergency medicine. She launched telehealth services across remote UAE areas, ensuring care reaches every corner. She trains women in leadership and crisis response. A trailblazer for inclusive health solutions, she represents care with courage in every mission.
+    </p>
   </div>
 
-  <footer>
-    Made with ☕ and creativity by BrewUp | UAE’s startup buddy 🇦🇪
-  </footer>
+  <div class="entrepreneur-box">
+    <p><strong>Fatima Al Kaabi:</strong> UAE’s youngest inventor with over 10 inventions by age 15. A tech and innovation leader.</p>
+    <button class="learn-more" onclick="toggleText('fatima')">Learn more</button>
+    <p id="fatima" class="hidden-text">
+      Fatima’s projects include a smart steering wheel and a voice-controlled robot. She speaks at global innovation forums and mentors youth. Her mission is to turn every curious kid into a maker. Her work is featured by MIT, and she keeps building with passion and hope for a better future.
+    </p>
+  </div>
+</div>
 
-  <script>
-    function generateIdeas() {
-      const amount = parseInt(document.getElementById('customBudget').value);
-      let output = "";
+<div class="blob">
+  <h2>💰 Investment-Based Startup Ideas</h2>
+  <label for="customAmount">Enter your budget in AED:</label><br />
+  <input type="number" id="customAmount" placeholder="Any amount..." />
+  <button onclick="generateIdeas()">Get Startup Ideas</button>
+  <div id="ideaResults" style="margin-top:20px;"></div>
+</div>
 
-      if (isNaN(amount) || amount <= 0) {
-        output = "Please enter a number more than 0.";
-      } else if (amount <= 4000) {
-        output = "Startup Ideas:\n- Sell bookmarks or keychains 📚\n- Start a weekend lemonade stand 🍋\n- Do plant rentals for offices 🌿";
-      } else if (amount <= 10000) {
-        output = "Startup Ideas:\n- Create social media posts for small businesses 📱\n- Do online classes for art or dance 🎨\n- Make a craft subscription box 📦";
-      } else if (amount <= 25000) {
-        output = "Startup Ideas:\n- Start a pet walking service 🐕\n- Create digital learning games 🧠\n- Launch a local makeup brand 💄";
-      } else {
-        output = "Startup Ideas:\n- Coffee + coding café for teens ☕💻\n- Travel planning app with local tips 📲\n- Eco gift shop for handmade items 🌍🎁";
-      }
+<div class="big-box">
+  <h2>💡 10 Smart Tips for Entrepreneurs</h2>
 
-      document.getElementById("customOutput").textContent = output;
+  <div class="tip-box">
+    <p><strong>Start small:</strong> Don’t wait for perfect. Begin with simple steps to build confidence.</p>
+    <button class="learn-more" onclick="toggleText('tip1')">Learn more</button>
+    <p id="tip1" class="hidden-text">
+      Starting small allows you to learn quickly and avoid major risks. Many successful businesses began from garages or living rooms. Test your idea with friends or schoolmates. Use feedback to improve and grow. Don’t wait for huge funds—begin now with what you have and let it grow.
+    </p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Know your market:</strong> Learn what your customers want and how to reach them.</p>
+    <button class="learn-more" onclick="toggleText('tip2')">Learn more</button>
+    <p id="tip2" class="hidden-text">
+      Understanding your market means knowing who your customers are and what they need. Research competitors, trends, and gaps. Talk to potential customers directly to get real opinions. This knowledge helps you create products or services that really sell. Tailor your message to reach the right people effectively.
+    </p>
+  </div>
+
+  <!-- Add the remaining 8 tips in the same format here -->
+
+</div>
+
+<script>
+  function changeLanguage(lang) {
+    if(lang === 'ar'){
+      alert('موقع الويب سيُعرض بالعربية قريباً.');
+      // You can add Arabic language switch logic here later
+    } else {
+      alert('Website will continue in English.');
+    }
+  }
+
+  function toggleText(id) {
+    const para = document.getElementById(id);
+    para.style.display = (para.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function generateIdeas() {
+    const amount = parseInt(document.getElementById('customAmount').value);
+    let ideas = [];
+    if (isNaN(amount)) {
+      ideas = [
+        "Mobile app development 📱",
+        "Online tutoring platform 🎓",
+        "Handmade crafts & digital art shop 🧶",
+        "Recycled fashion brand 👗",
+        "Pet services & grooming 🐶",
+        "Local food delivery 🥗",
+        "Green consulting for schools 🌿"
+      ];
+    } else if (amount <= 5000) {
+      ideas = [
+        "Home bakery or coffee cart ☕",
+        "Tutoring kids online 🧠",
+        "Sell planners/stickers 📒",
+        "Basic graphic design 🎨",
+        "Soap or candle making 🕯️",
+        "Virtual assistant services 💻",
+        "Sell eco-bags or crafts ♻️"
+      ];
+    } else if (amount <= 20000) {
+      ideas = [
+        "Pop-up coffee lounge ☕",
+        "Eco-friendly packaging business 🌱",
+        "Subscription box startup 📦",
+        "Tech repair and resale 🔧",
+        "Home décor studio 🖼️",
+        "Fitness coaching & digital plans 🏋️",
+        "Online Arabic calligraphy shop ✍️"
+      ];
+    } else {
+      ideas = [
+        "Mobile café van ☕🚚",
+        "Sustainable tech startup ♻️💻",
+        "App for wellness and journaling 📲",
+        "EdTech business for kids 🎓",
+        "Indoor smart farming 🌾",
+        "AI business helper chatbot 🤖",
+        "Arabic comics + animation studio 🎬"
+      ];
     }
 
-    function changeLanguage() {
-      const lang = document.getElementById("lang").value;
-      alert("More languages coming soon. English is currently supported.");
-    }
-  </script>
+    const ideaHTML = "<ul>" + ideas.map(i => `<li>${i}</li>`).join('') + "</ul>";
+    document.getElementById('ideaResults').innerHTML = ideaHTML;
+  }
+</script>
+
 </body>
 </html>
