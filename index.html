@@ -1,0 +1,157 @@
+from flask import Flask, render_template_string, request
+
+app = Flask(__name__)
+
+entrepreneurs = [
+    {
+        "name": "Whitney Wolfe Herd",
+        "type": "Tech Entrepreneur",
+        "story": "Whitney Wolfe Herd co-founded Tinder but left due to conflicts. She then founded Bumble, a dating app where women make the first move. In 2021, she became the youngest self-made female billionaire after taking Bumble public.",
+        "link": "https://en.wikipedia.org/wiki/Whitney_Wolfe_Herd"
+    },
+    {
+        "name": "Yasmin Belo-Osagie",
+        "type": "Social Entrepreneur",
+        "story": "Yasmin Belo-Osagie co-founded She Leads Africa, a platform that supports African women entrepreneurs. She combines her background in law and business to empower women across the continent.",
+        "link": "https://techherng.com/yasmin-belo-osagie-co-founder-leads-africa/"
+    },
+    {
+        "name": "Sara Blakely",
+        "type": "Self-Made Billionaire",
+        "story": "Sara Blakely started with $5,000 selling fax machines door-to-door. She invented SPANX shapewear, faced multiple rejections, and finally got a prototype made by convincing a factory owner. She became the youngest self-made female billionaire. Her grit and persistence show how far determination can take you.",
+        "link": "https://en.wikipedia.org/wiki/Sara_Blakely"
+    },
+    {
+        "name": "Elon Musk",
+        "type": "Tech Entrepreneur",
+        "story": "Elon Musk moved from South Africa with limited resources. He co-founded Zip2, then X.com (now PayPal), and later started Tesla and SpaceX. His risk-taking and innovation helped reshape multiple industries.",
+        "link": "https://en.wikipedia.org/wiki/Elon_Musk"
+    },
+    {
+        "name": "Jan Koum",
+        "type": "WhatsApp Co-Founder",
+        "story": "Jan Koum immigrated from Ukraine, lived on food stamps, and later co-created WhatsApp, which Facebook bought for $19 billion. He proves how anyone with a problem-solving mindset and dedication can build something massive.",
+        "link": "https://en.wikipedia.org/wiki/Jan_Koum"
+    }
+]
+
+@app.route('/', methods=['GET', 'POST'])
+def homepage():
+    advice = None
+    other_amount = ""
+    if request.method == 'POST':
+        other_amount = request.form.get("other_amount", "")
+        try:
+            amt = int(other_amount)
+            advice = generate_plan(amt)
+        except:
+            advice = "Please enter a valid number to get a custom startup plan."
+
+    html = '''
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Startup Launchpad</title>
+        <style>
+            body {
+                font-family: 'Courier New', monospace;
+                background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210416/pngtree-business-tech-startup-blue-contemporary-image_627598.jpg");
+                background-size: cover;
+                background-attachment: fixed;
+                color: #fff;
+            }
+            .container {
+                max-width: 1100px;
+                margin: auto;
+                padding: 40px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 15px;
+            }
+            h1 {
+                text-align: center;
+                font-size: 32px;
+                color: #ffd700;
+            }
+            .story {
+                background: rgba(255, 255, 255, 0.1);
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .story a {
+                float: right;
+                text-decoration: none;
+                color: #00e1ff;
+            }
+            .invest {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 30px;
+            }
+            .invest input[type=text] {
+                padding: 10px;
+                width: 200px;
+                border-radius: 5px;
+                border: none;
+            }
+            .invest button {
+                padding: 10px 15px;
+                border: none;
+                background-color: #00bfff;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .result {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                margin-top: 20px;
+                border-left: 5px solid #ffd700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🚀 Inspiring Entrepreneurs & Startup Planner</h1>
+            {% for e in entrepreneurs %}
+                <div class="story">
+                    <strong>{{e.name}}</strong> <em>({{e.type}})</em><br>
+                    {{e.story}} <a href="{{e.link}}" target="_blank">Learn more →</a>
+                </div>
+            {% endfor %}
+
+            <div class="invest">
+                <h2>💰 Enter Your Own Investment Amount</h2>
+                <form method="POST">
+                    <input type="text" name="other_amount" placeholder="Enter amount (e.g. 7500)" value="{{other_amount}}">
+                    <button type="submit">Get Plan</button>
+                </form>
+            </div>
+
+            {% if advice %}
+                <div class="result">
+                    <h3>Your Custom Startup Plan:</h3>
+                    <p>{{advice}}</p>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+    </html>
+    '''
+    return render_template_string(html, entrepreneurs=entrepreneurs, advice=advice, other_amount=other_amount)
+
+def generate_plan(amount):
+    if amount < 1000:
+        return "You might start with digital services like graphic design, social media management, or tutoring using free tools."
+    elif amount < 5000:
+        return "You can create a small e-commerce business using platforms like Etsy or Shopify, and invest in packaging, ads, and inventory."
+    elif amount < 10000:
+        return "Consider starting a mobile coffee cart, app development project, or eco-friendly product line. Allocate money for licenses, branding, and marketing."
+    elif amount < 20000:
+        return "You can lease a small retail space or launch a tech prototype with developer help, and invest in full branding, operations, and promotion."
+    else:
+        return "Your budget allows for a full startup setup including product development, hiring freelancers, marketing campaigns, and logistics."
+
+if __name__ == '__main__':
+    app.run(port=5001, debug=True)
