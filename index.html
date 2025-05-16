@@ -2,211 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrewUp ☕ | Empowering Entrepreneurs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BrewUp ☕ | Ignite Your Ideas</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: monospace;
-      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #f3e9dd, #d2b48c);
       color: #3b2f2f;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     header {
-      background-color: rgba(44, 34, 24, 0.9);
-      color: #fff;
-      padding: 25px 10px;
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: bold;
-      width: 100%;
-      letter-spacing: 2px;
-    }
-
-    main {
-      background: rgba(255, 248, 240, 0.95);
-      border-radius: 12px;
-      max-width: 960px;
-      width: 90%;
-      padding: 30px 40px;
-      margin: 40px 0;
-      box-shadow: 0 0 25px rgba(60, 50, 30, 0.4);
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 1.9em;
-      color: #4e342e;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #795548;
-      padding-bottom: 10px;
-    }
-
-    .entrepreneur-box, .tip-box {
-      background-color: #f3e5ab;
-      border-left: 6px solid #6d4c41;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .entrepreneur-box h3, .tip-box p {
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    .entrepreneur-box a {
-      color: #3e2723;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .entrepreneur-box a:hover {
-      text-decoration: underline;
-    }
-
-    .investment button, .investment #customSubmit {
-      background-color: #6d4c41;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1em;
-      transition: background-color 0.3s;
-    }
-
-    .investment button:hover, .investment #customSubmit:hover {
-      background-color: #5d4037;
-    }
-
-    .investment input[type="number"] {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      width: 150px;
-      margin-right: 10px;
-      font-size: 1em;
-      font-family: monospace;
-    }
-
-    .know-more-btn {
-      background-color: #6d4c41;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.9em;
-      cursor: pointer;
-      float: right;
-    }
-
-    .know-more-btn:hover {
       background-color: #4e342e;
+      color: white;
+      padding: 2rem;
+      text-align: center;
     }
 
-    .expanded-content {
-      background: #fff8e1;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 12px;
-      display: none;
-      font-size: 0.95em;
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
     }
 
-    a {
-      color: #4e342e;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    #investmentPlan {
-      background-color: #fff3e0;
-      border-left: 6px solid #6d4c41;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      display: none;
+    .section h2 {
+      border-left: 5px solid #4e342e;
+      padding-left: 10px;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .entrepreneur {
+      background-color: #fff8f0;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #8d6e63;
+    }
+
+    .startup-idea {
+      background-color: #fcefe1;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #a1887f;
+    }
+
+    .budget-button {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #a1887f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      background: #4e342e;
+      color: white;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <header>
-    ☕ BrewUp — Empowering UAE Entrepreneurs 🚀
+    <h1>BrewUp ☕</h1>
+    <p>Where bold ideas meet business & sustainability</p>
   </header>
-  <main>
-    <section class="entrepreneurs">
-      <h2>🌟 Inspiring UAE Women Entrepreneurs</h2>
-      <div class="entrepreneur-box">
-        <h3>👩‍💼 Dr. Aisha Bin Bishr</h3>
-        <p>Director of Smart Dubai, she leads digital innovation across the UAE. <a href="https://www.smartdubai.ae" target="_blank">Learn more</a></p>
-      </div>
-      <div class="entrepreneur-box">
-        <h3>👩‍💼 Hana Al Rostamani</h3>
-        <p>CEO of First Abu Dhabi Bank, known for startup support and mentorship. <a href="https://www.bankfab.com" target="_blank">Learn more</a></p>
-      </div>
-    </section>
 
-    <section class="investment">
-      <h2>💰 Choose Your Investment</h2>
-      <div>
-        <button onclick="showPlan(1000)">AED 1,000</button>
-        <button onclick="showPlan(5000)">AED 5,000</button>
-        <button onclick="showPlan(10000)">AED 10,000</button>
-      </div>
-      <div style="margin-top:15px;">
-        <label for="customAmount"><strong>Custom Amount:</strong></label>
-        <input type="number" id="customAmount" placeholder="e.g., 7500" />
-        <button id="customSubmit">Submit</button>
-      </div>
-      <div id="investmentPlan"></div>
-    </section>
+  <div class="section">
+    <h2>🚀 Startup Ideas</h2>
+    <div class="startup-idea"><strong>Eco-friendly Packaging:</strong> Replace plastic with biodegradable alternatives 🌱</div>
+    <div class="startup-idea"><strong>Virtual Tutoring Hub:</strong> Connect students with skilled tutors online 📚</div>
+    <div class="startup-idea"><strong>Artisan Bakery:</strong> Sell fresh, locally made baked goods 🥖</div>
+    <div class="startup-idea"><strong>Mobile App for Wellness:</strong> Daily meditation, hydration & activity tracker 💧</div>
+    <div class="startup-idea"><strong>DIY Robotics Kits:</strong> For schools and hobbyists 🤖</div>
+    <div class="startup-idea"><strong>Sustainable Fashion Line:</strong> Stylish clothes from recycled materials 👗</div>
+  </div>
 
-    <section class="tips">
-      <h2>💡 Entrepreneur Tips</h2>
-      <div class="tip-box" id="tip1">
-        <p><strong>Tip 1:</strong> Build your network early.</p>
-        <button class="know-more-btn" onclick="toggleTip(event, 1)">🔍 Know more</button>
-        <div class="expanded-content" id="tipContent1">
-          Networking opens doors. Attend events, use LinkedIn, and always offer value too.
-        </div>
-      </div>
-    </section>
-  </main>
+  <div class="section">
+    <h2>💼 Women Entrepreneurs</h2>
 
-  <script>
-    function toggleTip(event, num) {
-      const content = document.getElementById('tipContent' + num);
-      if (content.style.display === 'block') {
-        content.style.display = 'none';
-        event.target.textContent = '🔍 Know more';
-      } else {
-        content.style.display = 'block';
-        event.target.textContent = '▲ Show less';
-      }
-    }
+    <div class="entrepreneur">
+      <strong>Rania Al Ali (UAE)</strong><br>
+      Founder of The Green Spoon 🌿, a zero-waste grocery store in Abu Dhabi. Rania started with AED 20,000 and grew using social media to reach eco-conscious shoppers.
+    </div>
 
-    function showPlan(amount) {
-      const planDiv = document.getElementById('investmentPlan');
-      planDiv.style.display = 'block';
-      planDiv.innerHTML = `<strong>Plan for AED ${amount}:</strong> Launch a mini coffee cart, basic website, and local ads. Perfect for testing your startup ☕`;
-    }
+    <div class="entrepreneur">
+      <strong>Lubna Olayan (KSA)</strong><br>
+      One of the most powerful women in business. She led her family conglomerate, opening global opportunities for Middle Eastern women.
+    </div>
 
-    document.getElementById('customSubmit').addEventListener('click', () => {
-      const amount = parseInt(document.getElementById('customAmount').value);
-      if (!isNaN(amount)) showPlan(amount);
-    });
-  </script>
+    <div class="entrepreneur">
+      <strong>Salama Alabbar (UAE)</strong><br>
+      Founder of Sympl, a curated concept store mixing design, sustainability & fashion. Started with passion and a minimal AED 15,000 budget.
+    </div>
+
+    <div class="entrepreneur">
+      <strong>Reem Al Gurg (UAE)</strong><br>
+      Vice Chairperson of Easa Saleh Al Gurg Group, advocating for women in STEM and business leadership.
+    </div>
+
+    <div class="entrepreneur">
+      <strong>Huda Kattan (UAE)</strong><br>
+      A beauty influencer turned mogul. She started Huda Beauty with her sisters using AED 25,000 and is now a global brand 🌍.
+    </div>
+
+    <div class="entrepreneur">
+      <strong>Nayla Al Khaja (UAE)</strong><br>
+      First female Emirati film director and CEO of Nayla Al Khaja Films. She supports women in creative industries. 🎬
+    </div>
+
+    <div class="entrepreneur">
+      <strong>Amna Al Qubaisi (UAE)</strong><br>
+      First female Emirati Formula 4 driver. She’s an inspiration for women breaking into male-dominated fields. 🏎️
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💰 Investment Plans</h2>
+    <p>Choose a budget to discover matching startup guides:</p>
+    <a class="budget-button" href="#">AED 1,000</a>
+    <a class="budget-button" href="#">AED 5,000</a>
+    <a class="budget-button" href="#">AED 10,000</a>
+    <a class="budget-button" href="#">AED 25,000</a>
+    <a class="budget-button" href="#">AED 50,000</a>
+  </div>
+
+  <footer>
+    ☕ BrewUp — Start smart. Brew success. | Made with 💡 in the UAE.
+  </footer>
 </body>
 </html>
