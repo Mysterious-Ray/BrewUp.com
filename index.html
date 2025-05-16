@@ -3,185 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BrewUp ☕ | Startup Power</title>
+  <title>BrewUp ☕ | Empowering Entrepreneurs</title>
   <style>
     body {
       margin: 0;
       font-family: monospace;
-      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210416/pngtree-business-tech-startup-blue-contemporary-image_627598.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: #ffffff;
+      background-color: #f0f0f0;
+      color: #333;
     }
-
-    .header {
-      background-color: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      padding: 30px 15px;
-      font-size: 2.5em;
-      color: #ffeecc;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px;
-      gap: 30px;
-    }
-
-    .card {
-      background-color: rgba(0, 0, 0, 0.65);
-      border: 2px solid #ffffff80;
-      border-radius: 15px;
+    header {
+      background-color: #6f4e37;
+      color: #fff;
       padding: 20px;
-      width: 90%;
-      max-width: 800px;
-      box-shadow: 0 0 15px #ffffff20;
+      text-align: center;
     }
-
-    .card h2 {
-      color: #ffd699;
+    main {
+      padding: 20px;
     }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #90ee90;
-      text-decoration: underline;
+    .investment-section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
     }
-
-    select, input[type="number"], button {
-      margin-top: 15px;
-      padding: 10px;
-      font-family: monospace;
-      font-size: 1em;
-      border-radius: 5px;
+    .investment-section h2 {
+      margin-top: 0;
+    }
+    .investment-options button {
+      margin: 5px;
+      padding: 10px 15px;
       border: none;
-      outline: none;
-    }
-
-    button {
-      background-color: #ffcc99;
-      color: black;
-      font-weight: bold;
+      border-radius: 5px;
+      background-color: #6f4e37;
+      color: #fff;
       cursor: pointer;
     }
-
-    #result {
-      margin-top: 20px;
-      font-size: 1em;
-      color: #fff;
+    .investment-options button:hover {
+      background-color: #5a3e2d;
     }
-
-    @media screen and (max-width: 600px) {
-      .header {
-        font-size: 1.5em;
-      }
-
-      .card {
-        padding: 15px;
-      }
+    .custom-investment {
+      margin-top: 10px;
+    }
+    .custom-investment input {
+      padding: 8px;
+      width: 100px;
+      margin-right: 10px;
+    }
+    .tips {
+      margin-top: 20px;
+    }
+    .tip {
+      background-color: #e0e0e0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .tip-content {
+      display: none;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">🌱 BrewUp — Where Ideas Perk ☕</div>
+<header>
+  <h1>☕ BrewUp</h1>
+  <p>Empowering Entrepreneurs in the UAE</p>
+</header>
 
-  <div class="container">
-
-    <!-- Entrepreneurs -->
-    <div class="card">
-      <h2>👩‍💼 Muna Al Gurg – Retail & Impact</h2>
-      <p>Muna leads the Easa Saleh Al Gurg Group and champions education and women empowerment. She’s a force in both business and social development in the UAE.</p>
-      <a href="https://www.forbesmiddleeast.com/lists/top-businesswomen-in-the-middle-east/muna-al-gurg/" target="_blank">Learn more 🔗</a>
+<main>
+  <section class="investment-section">
+    <h2>💰 Choose Your Investment</h2>
+    <div class="investment-options">
+      <button onclick="showTips(1000)">AED 1,000</button>
+      <button onclick="showTips(5000)">AED 5,000</button>
+      <button onclick="showTips(6000)">AED 6,000</button>
+      <button onclick="showTips(8000)">AED 8,000</button>
+      <button onclick="showTips(9000)">AED 9,000</button>
+      <button onclick="showTips(10000)">AED 10,000</button>
     </div>
-
-    <div class="card">
-      <h2>🧬 Dr. Maryam Matar – Health Innovation</h2>
-      <p>Founder of the UAE Genetic Diseases Association, Dr. Maryam is one of the leading female figures in regional healthcare innovation and science leadership.</p>
-      <a href="https://en.wikipedia.org/wiki/Maryam_Matar" target="_blank">Learn more 🔗</a>
+    <div class="custom-investment">
+      <label for="customAmount">Or enter your own amount:</label>
+      <input type="number" id="customAmount" placeholder="e.g., 7500">
+      <button onclick="customTips()">Submit</button>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>🧑‍💻 Pavel Durov – Tech & Security</h2>
-      <p>Founder of Telegram, he’s a young innovator pushing for privacy and innovation in social apps. His resilience is a reminder to keep going no matter the pressure.</p>
-      <a href="https://en.wikipedia.org/wiki/Pavel_Durov" target="_blank">Learn more 🔗</a>
-    </div>
+  <section class="tips" id="tipsSection">
+    <!-- Tips will be displayed here -->
+  </section>
+</main>
 
-    <div class="card">
-      <h2>👨‍🎓 Ritesh Agarwal – From Rooms to Riches</h2>
-      <p>Ritesh started OYO Rooms at age 19. From humble beginnings, he used tech and smart branding to build one of India’s top hospitality chains globally.</p>
-      <a href="https://en.wikipedia.org/wiki/Ritesh_Agarwal" target="_blank">Learn more 🔗</a>
-    </div>
+<script>
+  const tipsData = {
+    1000: [
+      "📘 Invest in a domain name and basic website hosting.",
+      "🎨 Design a simple logo using free tools.",
+      "📱 Set up social media profiles for your brand.",
+      "📝 Create a content plan for your blog or social media.",
+      "📦 Source initial product samples or prototypes.",
+      "📊 Conduct a basic market research survey.",
+      "🧾 Register your business name.",
+      "📚 Purchase a business planning book or course.",
+      "🛒 List products on online marketplaces.",
+      "📣 Run a small social media ad campaign."
+    ],
+    5000: [
+      "🏢 Rent a small co-working space.",
+      "🛍️ Develop branded packaging materials.",
+      "💻 Upgrade to a professional website with e-commerce.",
+      "📷 Invest in a product photography session.",
+      "📈 Hire a freelance marketer for a campaign.",
+      "📦 Order initial inventory in bulk.",
+      "🧑‍💼 Attend a local business networking event.",
+      "🎓 Enroll in an advanced business course.",
+      "📝 Hire a copywriter for website content.",
+      "📣 Launch a targeted email marketing campaign."
+    ],
+    // Add similar arrays for 6000, 8000, 9000, 10000
+  };
 
-    <!-- Investment Box -->
-    <div class="card">
-      <h2>💰 Choose Your Investment</h2>
-      <p>How much are you planning to invest in your startup dream?</p>
-
-      <label for="investment">Select a budget:</label><br>
-      <select id="investment">
-        <option value="">-- Select --</option>
-        <option value="1000">AED 1,000</option>
-        <option value="5000">AED 5,000</option>
-        <option value="10000">AED 10,000</option>
-        <option value="20000">AED 20,000</option>
-        <option value="30000">AED 30,000</option>
-        <option value="other">Other</option>
-      </select><br>
-
-      <div id="customInput" style="display:none;">
-        <label for="customAmount">Enter your amount (AED):</label><br>
-        <input type="number" id="customAmount" placeholder="e.g. 7500">
-      </div>
-
-      <button onclick="generatePlan()">Generate Plan 💡</button>
-      <div id="result"></div>
-    </div>
-
-  </div>
-
-  <script>
-    const investment = document.getElementById('investment');
-    const customInput = document.getElementById('customInput');
-    const result = document.getElementById('result');
-
-    investment.addEventListener('change', function() {
-      if (investment.value === 'other') {
-        customInput.style.display = 'block';
-      } else {
-        customInput.style.display = 'none';
-      }
-      result.innerHTML = "";
+  function showTips(amount) {
+    const tipsSection = document.getElementById('tipsSection');
+    tipsSection.innerHTML = `<h2>💡 Tips for AED ${amount}</h2>`;
+    const tipsList = tipsData[amount] || generateGenericTips(amount);
+    tipsList.forEach((tip, index) => {
+      const tipDiv = document.createElement('div');
+      tipDiv.className = 'tip';
+      tipDiv.innerHTML = `<strong>Tip ${index + 1}:</strong> ${tip}`;
+      tipsSection.appendChild(tipDiv);
     });
+  }
 
-    function generatePlan() {
-      let value = investment.value;
-      if (value === 'other') {
-        value = document.getElementById('customAmount').value;
-      }
-
-      if (!value || isNaN(value) || value <= 0) {
-        result.innerHTML = "<p>Please enter a valid amount 💸</p>";
-        return;
-      }
-
-      result.innerHTML = `
-        <p>📊 Based on your investment of AED ${value}, here’s what you can do:</p>
-        <ul>
-          <li>✅ Research a niche business idea</li>
-          <li>✅ Set up basic branding & logo</li>
-          <li>✅ Launch a website or online shop</li>
-          <li>✅ Run social media ads to build an audience</li>
-          <li>✅ Offer a launch discount or free sample</li>
-        </ul>
-        <p>🧠 AI Business Planning (COMING SOON)</p>
-      `;
+  function customTips() {
+    const amount = document.getElementById('customAmount').value;
+    if (amount) {
+      showTips(amount);
     }
-  </script>
+  }
+
+  function generateGenericTips(amount) {
+    const tips = [];
+    for (let i = 1; i <= 10; i++) {
+      tips.push(`🔧 Allocate AED ${(amount / 10).toFixed(2)} to area ${i}.`);
+    }
+    return tips;
+  }
+</script>
 
 </body>
 </html>
