@@ -1,115 +1,410 @@
-<div>
-  <input type="number" id="customAmount" placeholder="Enter your budget in AED" />
-  <button onclick="generateIdeas()">Get Ideas</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BrewUp Startup Ideas ☕</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+  body {
+    font-family: 'Courier Prime', monospace;
+    margin: 0; padding: 0;
+    background: linear-gradient(135deg, #D7BFAE, #8B5E3C);
+    color: #3E2723;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .container {
+    margin: auto;
+    max-width: 700px;
+    padding: 20px;
+  }
+  .blob-box {
+    background: #f3e6d8;
+    border-radius: 30px;
+    box-shadow: 8px 8px 15px #b69a81, -8px -8px 15px #fff6ea;
+    margin: 15px 0;
+    padding: 20px;
+  }
+  button, select, input[type=number] {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin: 10px 5px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 7px #b69a81, -4px -4px 7px #fff6ea;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button:hover {
+    background-color: #8B5E3C;
+    color: #f3e6d8;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+  }
+  li {
+    margin: 15px 0;
+    padding: 12px 15px;
+    border-radius: 20px;
+    background: #f9f0e6;
+    box-shadow: inset 4px 4px 7px #b69a81, inset -4px -4px 7px #fff6ea;
+    position: relative;
+  }
+  li button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+  p.long-desc {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  #languageSelect {
+    margin-bottom: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  /* Dark mode */
+  body.dark {
+    background: linear-gradient(135deg, #3e2723, #5d4037);
+    color: #f3e6d8;
+  }
+  body.dark .blob-box {
+    background: #5d4037;
+    box-shadow: 8px 8px 15px #3e2723, -8px -8px 15px #7b5e4c;
+  }
+  body.dark li {
+    background: #4e342e;
+    box-shadow: inset 4px 4px 7px #3e2723, inset -4px -4px 7px #7b5e4c;
+  }
+  body.dark button:hover {
+    background-color: #d7bfae;
+    color: #3e2723;
+  }
+  /* Center everything vertically and horizontally */
+  html, body {
+    height: 100%;
+  }
+  .centered-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div>
+    <label for="languageSelect" id="langLabel">Choose Language:</label>
+    <select id="languageSelect" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+    <button onclick="toggleDarkMode()" id="modeBtn">🌙 Dark Mode</button>
+  </div>
+
+  <div id="contentArea" class="centered-flex">
+    <!-- Women Entrepreneurs Section -->
+    <h2 id="womenTitle">👩‍💼 Inspiring Women Entrepreneurs</h2>
+    <div id="womenContainer"></div>
+
+    <!-- Budget Input and Ideas -->
+    <div class="blob-box">
+      <h3 id="budgetTitle">Enter Your Investment Budget (AED):</h3>
+      <input type="number" id="customAmount" min="1" placeholder="AED" />
+      <button onclick="generateIdeas()" id="generateBtn">Get Startup Ideas</button>
+      <div id="ideaResults"></div>
+    </div>
+
+    <!-- Tips Section -->
+    <h2 id="tipsTitle">💡 Top 10 Tips for Entrepreneurs</h2>
+    <div id="tipsContainer"></div>
+  </div>
 </div>
 
-<div id="ideaResults"></div>
-
 <script>
-  const ideasData = {
-    low: [
-      {
-        short: "Start a homemade healthy snack business with nutritious energy balls and granola bars.",
-        long: "Use your kitchen to prepare small batches of healthy snacks like energy balls and granola bars using clean, natural ingredients. Package attractively and sell at local markets or online. Focus on building a loyal customer base with samples and social media marketing. This low-cost startup lets you test the market without big expenses."
-      },
-      {
-        short: "Create handmade eco-friendly candles with unique scents and designs.",
-        long: "Craft natural soy or beeswax candles scented with essential oils and designed with unique shapes or colors. Market them as sustainable home decor or gifts. Sell online or at local fairs. This creative business appeals to customers seeking environmentally friendly and artisanal products."
-      },
-      {
-        short: "Offer personalized digital art or graphic design services to small businesses.",
-        long: "Use your design skills to create logos, social media graphics, or digital art for local businesses and startups. Build a portfolio online and get clients through social media or freelance platforms. Low startup costs with high creative potential."
-      },
-      {
-        short: "Start a small plant nursery growing easy-care indoor plants.",
-        long: "Grow popular indoor plants like succulents and pothos from cuttings or seeds at home. Sell plants in pots with care instructions at markets or online. Indoor gardening is trending, and customers love greenery in their homes."
-      },
-      {
-        short: "Launch a pet-sitting or dog-walking service for busy neighbors.",
-        long: "Offer reliable pet-sitting and dog-walking services in your community. Build trust through word-of-mouth and social media. Low investment needed but high demand from pet owners needing help during busy days or vacations."
+  // Data in English and Arabic
+  const data = {
+    en: {
+      women: [
+        {
+          name: "Fatima Al Qassimi",
+          short: "Fatima builds eco-friendly fashion brands from recycled fabrics.",
+          long: "Fatima Al Qassimi is a trailblazer in sustainable fashion, using recycled materials and empowering local artisans in the UAE. Her brand combines style with environmental responsibility, inspiring many young women to start their own eco-friendly ventures."
+        },
+        {
+          name: "Mariam Saeed",
+          short: "Mariam runs a successful tech startup creating smart home devices.",
+          long: "Mariam Saeed’s company develops smart home devices designed for energy efficiency and convenience. Her innovative solutions have gained attention across the Middle East, showing how technology can make daily life simpler and greener."
+        },
+        {
+          name: "Noora Al Mazrouei",
+          short: "Noora launched a popular organic skincare line using natural ingredients.",
+          long: "Noora Al Mazrouei created a skincare brand that uses only natural, organic ingredients sourced locally. Her dedication to quality and sustainability has earned her a loyal customer base and international recognition."
+        },
+        {
+          name: "Aisha Al Hammadi",
+          short: "Aisha runs a boutique coffee shop focused on community and quality.",
+          long: "Aisha Al Hammadi opened a coffee shop that brings people together with quality brews and cozy atmosphere. She combines passion for coffee with business savvy, supporting local farmers and artisans."
+        },
+        {
+          name: "Laila Al Sharif",
+          short: "Laila is an entrepreneur in the renewable energy sector focusing on solar solutions.",
+          long: "Laila Al Sharif leads a startup providing affordable solar energy installations to homes and businesses, helping the UAE reduce its carbon footprint and promoting clean energy adoption."
+        }
+      ],
+      tips: [
+        { short: "Plan your business carefully before you start.", long: "A good plan guides your business and helps you avoid mistakes. Research the market, set goals, and prepare for risks. Planning saves time and money in the long run." },
+        { short: "Know your customers well.", long: "Understand who your customers are and what they want. Talk to them, get feedback, and adapt your products or services to fit their needs better." },
+        { short: "Keep learning new skills.", long: "Business trends change fast. Stay updated and keep improving your skills to stay ahead of the competition." },
+        { short: "Build a strong online presence.", long: "Use social media and websites to reach more customers. Share your story and connect with your audience regularly." },
+        { short: "Manage your money wisely.", long: "Keep track of your income and expenses. Save for emergencies and avoid unnecessary costs." },
+        { short: "Network with other entrepreneurs.", long: "Join groups and events to learn from others, find partners, and get support." },
+        { short: "Be ready to adapt and change.", long: "Markets and customers change. Stay flexible and open to new ideas to keep your business growing." },
+        { short: "Focus on quality.", long: "Offer the best products or services you can. Quality keeps customers coming back." },
+        { short: "Take care of yourself.", long: "Running a business can be stressful. Balance work and rest to stay healthy and motivated." },
+        { short: "Celebrate small wins.", long: "Every success counts. Celebrate progress to stay positive and keep moving forward." }
+      ],
+      ideas: {
+        low: [
+          { short: "Homemade healthy snacks like energy balls.", long: "Make natural snacks using clean ingredients. Sell at markets or online. Low cost, high potential." },
+          { short: "Eco-friendly handmade candles.", long: "Craft soy or beeswax candles with unique scents and shapes. Sell locally or online." },
+          { short: "Digital art or design services.", long: "Create logos and graphics for small businesses using your skills." },
+          { short: "Indoor plant nursery with easy plants.", long: "Grow succulents and sell them with care tips. Trendy and fun business." },
+          { short: "Pet-sitting and dog walking service.", long: "Offer trustworthy care for pets in your neighborhood." }
+        ],
+        medium: [
+          { short: "Mobile coffee cart for busy professionals.", long: "Serve quality espresso at office areas or events with eco-friendly cups." },
+          { short: "Boutique with sustainable clothes.", long: "Design eco-friendly fashion with organic fabrics and local artisans." },
+          { short: "Specialty desserts like gourmet cupcakes.", long: "Create and sell unique pastries with beautiful designs." },
+          { short: "Virtual fitness coaching and plans.", long: "Provide personalized online workout coaching and plans." },
+          { short: "Eco-friendly cleaning services.", long: "Use natural products to clean homes and offices safely." }
+        ],
+        high: [
+          { short: "Specialty tea and coffee shop with events.", long: "Create a cozy spot with unique blends and host community events." },
+          { short: "Sustainable fashion brand with recycled fabrics.", long: "Build a brand focusing on eco-friendly materials and craftsmanship." },
+          { short: "App for sustainable lifestyle tracking.", long: "Develop an app helping people reduce their environmental impact." },
+          { short: "Modern coworking space with green design.", long: "Offer eco-friendly workspace with networking events for startups." },
+          { short: "Gourmet food truck with healthy meals.", long: "Serve organic meals on the go with seasonal menus." }
+        ]
       }
-    ],
-    medium: [
-      {
-        short: "Start a mobile coffee cart serving busy professionals with quality espresso.",
-        long: "Set up a mobile coffee cart near office areas or events. Invest in a quality coffee machine, beans, and eco-friendly cups. Engage customers with quick, friendly service and daily social media updates about your location. This taps into a consistent demand for fresh coffee with minimal overhead."
+    },
+    ar: {
+      women: [
+        {
+          name: "فاطمة القاسمي",
+          short: "فاطمة تبني علامات أزياء صديقة للبيئة من الأقمشة المعاد تدويرها.",
+          long: "تعد فاطمة القاسمي رائدة في مجال الأزياء المستدامة، حيث تستخدم مواد معاد تدويرها وتمكين الحرفيين المحليين في الإمارات. تجمع علامتها بين الأناقة والمسؤولية البيئية، ملهمة العديد من الشابات لبدء مشاريعهن الخاصة الصديقة للبيئة."
+        },
+        {
+          name: "مريم سعيد",
+          short: "مريم تدير شركة تقنية ناجحة تصنع أجهزة ذكية للمنازل.",
+          long: "تطور شركة مريم سعيد أجهزة ذكية للمنازل تهدف إلى كفاءة الطاقة والراحة. حظيت حلولها المبتكرة باهتمام واسع في الشرق الأوسط، مما يوضح كيف يمكن للتقنية تسهيل الحياة اليومية."
+        },
+        {
+          name: "نورة المزروعي",
+          short: "نورة أطلقت خطاً مشهوراً للعناية بالبشرة العضوية.",
+          long: "أنشأت نورة المزروعي علامة تجارية للعناية بالبشرة تستخدم مكونات طبيعية وعضوية محلية المصدر فقط. حظيت بجمهور مخلص واعتراف دولي بفضل التزامها بالجودة والاستدامة."
+        },
+        {
+          name: "عائشة الحمادي",
+          short: "عائشة تدير مقهى بوتيك يركز على المجتمع والجودة.",
+          long: "افتتحت عائشة الحمادي مقهى يجمع الناس مع مشروبات عالية الجودة وأجواء مريحة. تجمع بين حب القهوة والحس التجاري، داعمة للمزارعين والحرفيين المحليين."
+        },
+        {
+          name: "ليلى الشريف",
+          short: "ليلى رائدة أعمال في قطاع الطاقة المتجددة تركز على الحلول الشمسية.",
+          long: "تقود ليلى الشريف شركة ناشئة تقدم تركيبات طاقة شمسية ميسورة التكلفة للمنازل والشركات، مساهمة في تقليل البصمة الكربونية وتعزيز الطاقة النظيفة في الإمارات."
+        }
+      ],
+      tips: [
+        { short: "خطط لعملك جيدًا قبل البدء.", long: "الخطة الجيدة توجه عملك وتساعدك على تجنب الأخطاء. ابحث عن السوق، حدد الأهداف، واستعد للمخاطر. التخطيط يوفر الوقت والمال على المدى الطويل." },
+        { short: "تعرف على عملائك جيدًا.", long: "افهم من هم عملاؤك وما يريدون. تحدث معهم، واحصل على ملاحظاتهم، وطور منتجاتك أو خدماتك لتناسب احتياجاتهم." },
+        { short: "استمر في تعلم مهارات جديدة.", long: "تتغير اتجاهات الأعمال بسرعة. ابقَ محدثًا وطور مهاراتك لتبقى متقدمًا." },
+        { short: "ابنِ وجودًا قويًا على الإنترنت.", long: "استخدم وسائل التواصل الاجتماعي والمواقع للوصول إلى المزيد من العملاء. شارك قصتك وتواصل معهم بانتظام." },
+        { short: "أدر أموالك بحكمة.", long: "تابع دخلك ونفقاتك. ادخر للطوارئ وتجنب التكاليف غير الضرورية." },
+        { short: "تواصل مع رواد أعمال آخرين.", long: "انضم إلى مجموعات وفعاليات لتتعلم من الآخرين، وتجد شركاء، وتحصل على الدعم." },
+        { short: "كن مستعدًا للتكيف والتغيير.", long: "تتغير الأسواق والعملاء. كن مرنًا ومنفتحًا على الأفكار الجديدة لتنمية عملك." },
+        { short: "ركز على الجودة.", long: "قدم أفضل المنتجات أو الخدمات. الجودة تحافظ على عودة العملاء." },
+        { short: "اعتن بنفسك.", long: "إدارة العمل يمكن أن تكون مرهقة. حافظ على التوازن بين العمل والراحة لتحافظ على صحتك وتحفيزك." },
+        { short: "احتفل بالإنجازات الصغيرة.", long: "كل نجاح مهم. احتفل بالتقدم لتحافظ على إيجابيتك واستمر في التقدم." }
+      ],
+      ideas: {
+        low: [
+          { short: "وجبات صحية منزلية مثل كرات الطاقة.", long: "اصنع وجبات خفيفة طبيعية باستخدام مكونات نظيفة. بيعها في الأسواق أو عبر الإنترنت. تكلفة منخفضة وفرصة عالية." },
+          { short: "شموع يدوية صديقة للبيئة.", long: "اصنع شموعًا من شمع الصويا أو العسل بروائح وأشكال فريدة. بيعها محليًا أو عبر الإنترنت." },
+          { short: "خدمات التصميم أو الفن الرقمي.", long: "اصنع شعارات ورسومات للشركات الصغيرة باستخدام مهاراتك." },
+          { short: "مشتل نباتات داخلية بنباتات سهلة.", long: "زرع العصاريات وبيعها مع نصائح العناية. مشروع عصري وممتع." },
+          { short: "خدمة رعاية الحيوانات وتمشية الكلاب.", long: "قدم رعاية موثوقة للحيوانات في منطقتك." }
+        ],
+        medium: [
+          { short: "عربة قهوة متنقلة للمهنيين المشغولين.", long: "قدم إسبرسو عالي الجودة في مكاتب أو فعاليات باستخدام أكواب صديقة للبيئة." },
+          { short: "بوتيك للملابس المستدامة.", long: "صمم أزياء صديقة للبيئة بأقمشة عضوية وحرفيين محليين." },
+          { short: "حلويات متخصصة مثل كب كيك فاخرة.", long: "اصنع وبيع معجنات فريدة بتصاميم جميلة." },
+          { short: "تدريب لياقة بدنية افتراضي وخطط.", long: "قدم تدريبًا شخصيًا عبر الإنترنت وخطط تمارين." },
+          { short: "خدمات تنظيف صديقة للبيئة.", long: "استخدم منتجات طبيعية لتنظيف المنازل والمكاتب بأمان." }
+        ],
+        high: [
+          { short: "مقهى شاي وقهوة متخصص مع فعاليات.", long: "اصنع مكانًا مريحًا مع خلطات فريدة واستضافة فعاليات مجتمعية." },
+          { short: "علامة أزياء مستدامة بأقمشة معاد تدويرها.", long: "ابنِ علامة تركز على المواد الصديقة للبيئة والحرفية." },
+          { short: "تطبيق لتتبع نمط الحياة المستدام.", long: "طور تطبيقًا يساعد الناس على تقليل أثرهم البيئي." },
+          { short: "مساحة عمل مشتركة حديثة بتصميم صديق للبيئة.", long: "قدم مساحة عمل صديقة للبيئة مع فعاليات تواصل للشركات الناشئة." },
+          { short: "شاحنة طعام فاخرة بوجبات صحية.", long: "قدم وجبات عضوية متنقلة بقوائم موسمية." }
+        ]
       },
-      {
-        short: "Open a boutique offering handmade sustainable clothing and accessories.",
-        long: "Design and create eco-friendly clothing or accessories using organic or recycled materials. Partner with local artisans to produce limited collections. Market your brand online focusing on sustainability and creativity. This appeals to environmentally conscious consumers seeking unique fashion."
-      },
-      {
-        short: "Start a specialty dessert business making gourmet cupcakes and pastries.",
-        long: "Create gourmet cupcakes and pastries with unique flavors and beautiful designs. Sell at local cafes, markets, or online. Focus on quality ingredients and creative presentation. Develop a loyal customer base with tastings and social media promotions."
-      },
-      {
-        short: "Offer virtual fitness coaching and personalized workout plans.",
-        long: "Provide personalized workout coaching online via video calls and custom plans. Use social media and online ads to reach fitness enthusiasts. This scalable business requires minimal equipment and can grow with client referrals."
-      },
-      {
-        short: "Launch a small eco-friendly cleaning service using natural products.",
-        long: "Start a residential cleaning service that uses non-toxic, environmentally friendly cleaning supplies. Market to health-conscious families and offices. Train staff and build strong client relationships. This niche stands out from traditional cleaning businesses."
+      labels: {
+        chooseLang: "اختر اللغة:",
+        darkMode: "وضع الليل 🌙",
+        lightMode: "وضع النهار ☀️",
+        investmentBudget: "أدخل ميزانيتك للاستثمار (درهم):",
+        getIdeas: "احصل على أفكار لمشاريع ناشئة",
+        inspiringWomen: "👩‍💼 رائدات أعمال ملهمات",
+        topTips: "💡 أفضل 10 نصائح لرواد الأعمال",
+        learnMore: "تعرف على المزيد",
+        learnLess: "أقل",
+        enterAmount: "أدخل مبلغًا أكبر من 0"
       }
-    ],
-    high: [
-      {
-        short: "Open a cozy specialty tea and coffee shop with unique blends and events.",
-        long: "Invest in quality coffee and tea equipment, cozy seating, and unique drink recipes. Host workshops, tastings, and community events to create a welcoming space. Focus on exceptional customer experience and eco-friendly practices. This business appeals to customers seeking more than just a drink."
-      },
-      {
-        short: "Create a sustainable fashion brand focusing on recycled fabrics and local artisans.",
-        long: "Build a brand centered on eco-friendly fashion using recycled or organic materials. Collaborate with local tailors and artisans for production. Market your brand online with storytelling about sustainability and craftsmanship. Use your budget to launch a small collection and digital ads."
-      },
-      {
-        short: "Start a tech startup developing an app for sustainable lifestyle tracking.",
-        long: "Develop a mobile app that helps users track and reduce their environmental impact. Features include waste reduction tips, energy-saving challenges, and connecting users to local eco-friendly businesses. Use your budget for development, design, and marketing. This idea fits larger budgets with growth potential."
-      },
-      {
-        short: "Open a modern coworking space with sustainable design and amenities.",
-        long: "Create a coworking space that prioritizes sustainability through energy-efficient lighting, recycled materials, and green plants. Offer flexible plans for freelancers and startups. Host networking events to build a creative community. This business caters to remote workers and entrepreneurs."
-      },
-      {
-        short: "Launch a specialty gourmet food truck focusing on healthy, organic meals.",
-        long: "Start a food truck serving healthy, organic meals made from locally sourced ingredients. Create a rotating menu with seasonal options. Use social media to announce locations and specials. This mobile option combines food trends with convenience."
-      }
-    ]
+    }
   };
 
+  // Current language & mode
+  let currentLang = 'en';
+  let darkMode = false;
+
+  // Elements
+  const languageSelect = document.getElementById('languageSelect');
+  const modeBtn = document.getElementById('modeBtn');
+  const womenContainer = document.getElementById('womenContainer');
+  const tipsContainer = document.getElementById('tipsContainer');
+  const ideaResults = document.getElementById('ideaResults');
+  const budgetTitle = document.getElementById('budgetTitle');
+  const generateBtn = document.getElementById('generateBtn');
+  const langLabel = document.getElementById('langLabel');
+  const womenTitle = document.getElementById('womenTitle');
+  const tipsTitle = document.getElementById('tipsTitle');
+  const customAmount = document.getElementById('customAmount');
+  const contentArea = document.getElementById('contentArea');
+
+  // Helpers
+  function createBox(title, shortDesc, longDesc) {
+    const li = document.createElement('li');
+    li.setAttribute('tabindex', '0');
+    li.style.direction = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+    li.innerHTML = `
+      <strong>${title}</strong>
+      <p>${shortDesc}</p>
+      <button aria-expanded="false">${data[currentLang].labels.learnMore}</button>
+      <p class="long-desc hidden">${longDesc}</p>
+    `;
+
+    const btn = li.querySelector('button');
+    const longText = li.querySelector('.long-desc');
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        btn.textContent = data[currentLang].labels.learnMore;
+        longText.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        btn.textContent = data[currentLang].labels.learnLess;
+        longText.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    return li;
+  }
+
+  // Populate Women Entrepreneurs
+  function loadWomen() {
+    womenContainer.innerHTML = '';
+    data[currentLang].women.forEach(w => {
+      const box = createBox(w.name, w.short, w.long);
+      womenContainer.appendChild(box);
+    });
+  }
+
+  // Populate Tips
+  function loadTips() {
+    tipsContainer.innerHTML = '';
+    data[currentLang].tips.forEach(tip => {
+      const box = createBox('💡', tip.short, tip.long);
+      tipsContainer.appendChild(box);
+    });
+  }
+
+  // Generate Startup Ideas based on input amount
   function generateIdeas() {
-    const budget = Number(document.getElementById('customAmount').value);
-    const container = document.getElementById('ideaResults');
-    if (!budget || budget <= 0) {
-      container.innerHTML = '<p>Please enter a valid budget in AED.</p>';
+    const amount = parseInt(customAmount.value);
+    if (!amount || amount <= 0) {
+      alert(data[currentLang].labels.enterAmount);
       return;
     }
+    let ideasList;
+    if (amount < 5000) ideasList = data[currentLang].ideas.low;
+    else if (amount < 20000) ideasList = data[currentLang].ideas.medium;
+    else ideasList = data[currentLang].ideas.high;
 
-    let selectedIdeas = [];
-
-    if (budget < 5000) selectedIdeas = ideasData.low;
-    else if (budget < 20000) selectedIdeas = ideasData.medium;
-    else selectedIdeas = ideasData.high;
-
-    let html = '<h3>Startup Ideas for AED ' + budget + ':</h3><ul>';
-    selectedIdeas.forEach((idea, index) => {
-      html += `<li>
-        ${idea.short} 
-        <button onclick="toggleLearnMore(${index})" id="btn${index}">Learn More</button>
-        <p id="desc${index}" style="display:none; margin-top:5px;">${idea.long}</p>
-      </li>`;
+    ideaResults.innerHTML = '<ul></ul>';
+    const ul = ideaResults.querySelector('ul');
+    ideasList.forEach(idea => {
+      const li = createBox('💡', idea.short, idea.long);
+      ul.appendChild(li);
     });
-    html += '</ul>';
-    container.innerHTML = html;
   }
 
-  function toggleLearnMore(index) {
-    const desc = document.getElementById('desc' + index);
-    const btn = document.getElementById('btn' + index);
-    if (desc.style.display === 'block') {
-      desc.style.display = 'none';
-      btn.textContent = 'Learn More';
+  // Change Language Handler
+  function changeLanguage() {
+    currentLang = languageSelect.value;
+    // RTL for Arabic, LTR for English
+    if (currentLang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.body.style.direction = 'rtl';
     } else {
-      desc.style.display = 'block';
-      btn.textContent = 'Show Less';
+      document.documentElement.lang = 'en';
+      document.body.style.direction = 'ltr';
+    }
+    // Update labels
+    langLabel.textContent = data[currentLang].labels.chooseLang;
+    modeBtn.textContent = darkMode ? data[currentLang].labels.lightMode : data[currentLang].labels.darkMode;
+    budgetTitle.textContent = data[currentLang].labels.investmentBudget;
+    generateBtn.textContent = data[currentLang].labels.getIdeas;
+    womenTitle.textContent = data[currentLang].labels.inspiringWomen;
+    tipsTitle.textContent = data[currentLang].labels.topTips;
+
+    loadWomen();
+    loadTips();
+    ideaResults.innerHTML = ''; // clear ideas on language switch
+    customAmount.value = '';
+  }
+
+  // Toggle Dark Mode Handler
+  function toggleDarkMode() {
+    darkMode = !darkMode;
+    if (darkMode) {
+      document.body.classList.add('dark');
+      modeBtn.textContent = data[currentLang].labels.lightMode;
+    } else {
+      document.body.classList.remove('dark');
+      modeBtn.textContent = data[currentLang].labels.darkMode;
     }
   }
+
+  // Initial load
+  changeLanguage();
+
 </script>
+</body>
+</html>
