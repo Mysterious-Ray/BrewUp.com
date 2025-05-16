@@ -1,109 +1,212 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: monospace;
-  background: url('https://png.pngtree.com/thumb_back/fh260/background/20210416/pngtree-business-tech-startup-blue-contemporary-image_627598.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #001f3f; /* navy blue */
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrewUp ☕ | Empowering Entrepreneurs</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: monospace;
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #3b2f2f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-header {
-  background-color: rgba(0, 51, 102, 0.9);
-  color: #fff;
-  padding: 30px;
-  font-size: 2.2em;
-  letter-spacing: 2px;
-}
+    header {
+      background-color: rgba(44, 34, 24, 0.9);
+      color: #fff;
+      padding: 25px 10px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      width: 100%;
+      letter-spacing: 2px;
+    }
 
-main {
-  max-width: 1100px;
-  margin: 30px auto;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 51, 102, 0.7);
-  text-align: center;
-}
+    main {
+      background: rgba(255, 248, 240, 0.95);
+      border-radius: 12px;
+      max-width: 960px;
+      width: 90%;
+      padding: 30px 40px;
+      margin: 40px 0;
+      box-shadow: 0 0 25px rgba(60, 50, 30, 0.4);
+      text-align: center;
+    }
 
-h2 {
-  color: #004080;
-  border-bottom: 2px solid #004080;
-  padding-bottom: 5px;
-  margin-top: 40px;
-  font-weight: bold;
-}
+    h2 {
+      font-size: 1.9em;
+      color: #4e342e;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #795548;
+      padding-bottom: 10px;
+    }
 
-.entrepreneur-box,
-.tip-box {
-  background: #e6f0ff;
-  border-left: 6px solid #004080;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 6px;
-  max-width: 90%;
-}
+    .entrepreneur-box, .tip-box {
+      background-color: #f3e5ab;
+      border-left: 6px solid #6d4c41;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: left;
+    }
 
-.entrepreneur-box h3,
-.tip-box p {
-  color: #002244;
-}
+    .entrepreneur-box h3, .tip-box p {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
 
-button,
-#customSubmit {
-  background-color: #004080;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-}
+    .entrepreneur-box a {
+      color: #3e2723;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-button:hover,
-#customSubmit:hover {
-  background-color: #003366;
-}
+    .entrepreneur-box a:hover {
+      text-decoration: underline;
+    }
 
-input[type="number"] {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 140px;
-  font-size: 16px;
-}
+    .investment button, .investment #customSubmit {
+      background-color: #6d4c41;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
 
-.know-more-btn {
-  font-size: 0.9em;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background-color: #004080;
-}
+    .investment button:hover, .investment #customSubmit:hover {
+      background-color: #5d4037;
+    }
 
-.know-more-btn:hover {
-  background-color: #003366;
-}
+    .investment input[type="number"] {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 150px;
+      margin-right: 10px;
+      font-size: 1em;
+      font-family: monospace;
+    }
 
-.expanded-content {
-  background: #dbeaff;
-  padding: 15px;
-  border-radius: 6px;
-  border-left: 4px solid #004080;
-  display: none;
-  max-height: 300px;
-  overflow-y: auto;
-  text-align: left;
-}
+    .know-more-btn {
+      background-color: #6d4c41;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9em;
+      cursor: pointer;
+      float: right;
+    }
 
-a {
-  color: #004080;
-  font-weight: bold;
-}
+    .know-more-btn:hover {
+      background-color: #4e342e;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    .expanded-content {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 12px;
+      display: none;
+      font-size: 0.95em;
+    }
+
+    a {
+      color: #4e342e;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #investmentPlan {
+      background-color: #fff3e0;
+      border-left: 6px solid #6d4c41;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    ☕ BrewUp — Empowering UAE Entrepreneurs 🚀
+  </header>
+  <main>
+    <section class="entrepreneurs">
+      <h2>🌟 Inspiring UAE Women Entrepreneurs</h2>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Dr. Aisha Bin Bishr</h3>
+        <p>Director of Smart Dubai, she leads digital innovation across the UAE. <a href="https://www.smartdubai.ae" target="_blank">Learn more</a></p>
+      </div>
+      <div class="entrepreneur-box">
+        <h3>👩‍💼 Hana Al Rostamani</h3>
+        <p>CEO of First Abu Dhabi Bank, known for startup support and mentorship. <a href="https://www.bankfab.com" target="_blank">Learn more</a></p>
+      </div>
+    </section>
+
+    <section class="investment">
+      <h2>💰 Choose Your Investment</h2>
+      <div>
+        <button onclick="showPlan(1000)">AED 1,000</button>
+        <button onclick="showPlan(5000)">AED 5,000</button>
+        <button onclick="showPlan(10000)">AED 10,000</button>
+      </div>
+      <div style="margin-top:15px;">
+        <label for="customAmount"><strong>Custom Amount:</strong></label>
+        <input type="number" id="customAmount" placeholder="e.g., 7500" />
+        <button id="customSubmit">Submit</button>
+      </div>
+      <div id="investmentPlan"></div>
+    </section>
+
+    <section class="tips">
+      <h2>💡 Entrepreneur Tips</h2>
+      <div class="tip-box" id="tip1">
+        <p><strong>Tip 1:</strong> Build your network early.</p>
+        <button class="know-more-btn" onclick="toggleTip(event, 1)">🔍 Know more</button>
+        <div class="expanded-content" id="tipContent1">
+          Networking opens doors. Attend events, use LinkedIn, and always offer value too.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleTip(event, num) {
+      const content = document.getElementById('tipContent' + num);
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        event.target.textContent = '🔍 Know more';
+      } else {
+        content.style.display = 'block';
+        event.target.textContent = '▲ Show less';
+      }
+    }
+
+    function showPlan(amount) {
+      const planDiv = document.getElementById('investmentPlan');
+      planDiv.style.display = 'block';
+      planDiv.innerHTML = `<strong>Plan for AED ${amount}:</strong> Launch a mini coffee cart, basic website, and local ads. Perfect for testing your startup ☕`;
+    }
+
+    document.getElementById('customSubmit').addEventListener('click', () => {
+      const amount = parseInt(document.getElementById('customAmount').value);
+      if (!isNaN(amount)) showPlan(amount);
+    });
+  </script>
+</body>
+</html>
